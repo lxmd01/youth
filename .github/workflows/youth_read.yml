@@ -46,12 +46,14 @@ jobs:
           node Task/Youth_Read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ2 }}
+
       - name: '运行 【中青看点账号2-文章阅读3-35篇】'
         if: env.YOUTH_READ3
         run: |
           node Task/Youth_Read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ3 }}
+
       - name: '运行 【中青看点账号2-文章阅读1-54篇】'
         if: env.YOUTH_READ4
         run: |
@@ -64,12 +66,14 @@ jobs:
           node Task/Youth_Read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ5 }}
+          
       - name: '运行 【中青看点账号3-文章阅读3-54篇】'
         if: env.YOUTH_READ6
         run: |
           node Task/Youth_Read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ6 }}
+
           - name: '运行 【中青看点账号4-文章阅读1-54篇】'
         if: env.YOUTH_READ7         
         run: |

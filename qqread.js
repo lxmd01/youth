@@ -37,7 +37,9 @@ var qqreadheaderVal,qqreadtimeurlVal,qqreadtimeheaderVal, qqred,qqredtime,qqredt
         qqreadtimeurlVal : process.env.QQREAD_TIMEBODY
         qqreadtimeheaderVal : JSON.stringify(process.env.QQREAD_TIMEHEADER)
         
-
+console.log(qqreadheaderVal+"---")
+console.log(qqreadtimeheaderVal+"3333")
+console.log(qqreadtimeurlVal+"333")
 
 var tz=''
 

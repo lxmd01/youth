@@ -33,12 +33,9 @@ const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'
 
 let qqreadheaderVal,qqreadtimeurlVal,qqreadtimeheaderVal, qqred,qqredtime,qqredtimes;
 
-	qqred = process.env.QQREAD_HEADER
-	qqredtime = process.env.QQREAD_TIMEBODY
-	qqredtimes = process.env.QQREAD_TIMEHEADER
-        qqreadheaderVal :JSON.stringify(qqred)
-        qqreadtimeurlVal : qqredtime
-        qqreadtimeheaderVal : JSON.stringify(qqredtimes)
+        qqreadheaderVal :JSON.stringify(process.env.QQREAD_HEADER)
+        qqreadtimeurlVal : process.env.QQREAD_TIMEBODY
+        qqreadtimeheaderVal : JSON.stringify(process.env.QQREAD_TIMEHEADER)
         
 
 

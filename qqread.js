@@ -34,6 +34,7 @@ const qqreadheaderVal = process.env.QQREAD_HEADER
 const qqreadtimeurlVal = process.env.QQREAD_TIMEBODY
 const qqreadtimeheaderVal = process.env.QQREAD_TIMEHEADER
 
+console.log(`-------------------------\n\n开始中青看点第${$.qqreadheaderVal}次阅读`)
 var tz=''
 
 

@@ -31,9 +31,9 @@ const wktimess=1200//周奖励领取标准，默认1200分钟
 
 const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'
 const Secrets = {
-	qqreadheaderVal: process.env.QQREAD_HEADER,
-	qqreadtimeurlVal: process.env.QQREAD_TIMEBODY,
-	qqreadtimeheaderVal: process.env.QQREAD_TIMEHEADER,
+	qqreadheaderVal = process.env.QQREAD_HEADER,
+	qqreadtimeurlVal = process.env.QQREAD_TIMEBODY,
+	qqreadtimeheaderVal = process.env.QQREAD_TIMEHEADER,
 };
 
 var tz=''

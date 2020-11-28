@@ -34,10 +34,7 @@ const Secrets = {
 	qqreadheaderVal: process.env.QQREAD_HEADER,
 	qqreadtimeurlVal: process.env.QQREAD_TIMEBODY,
 	qqreadtimeheaderVal: process.env.QQREAD_TIMEHEADER,
-	PUSH_KEY: process.env.PUSH_KEY, //server酱推送消息
-	BARK_PUSH: process.env.BARK_PUSH, //Bark推送
-	TG_BOT_TOKEN: process.env.TG_BOT_TOKEN, //TGBot推送Token
-	TG_USER_ID: process.env.TG_USER_ID, //TGBot推送成员ID
+	
 };
 
 

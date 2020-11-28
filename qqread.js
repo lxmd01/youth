@@ -126,10 +126,6 @@ $.done();//结束
 
 //任务列表
 function qqreadtask() {
-//console.log(` 当前执行时间:${new Date().toString()}`);
-console.log(`国际时间 (UTC+00)：${new Date().toLocaleString()}`)
-console.log(`北京时间 (UTC+08)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}\n`)
-
 return new Promise((resolve, reject) => {
 
   const toqqreadtaskurl ={url: 'https://mqqapi.reader.qq.com/mqq/red_packet/user/page?fromGuid=',

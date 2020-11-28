@@ -24,10 +24,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - name: npm install
+      - name: npm install 
+        if: env.QQREAD_HEADER
         run: |
           npm install
-          npm install got #tough-cookie
       - name: ' 运行 【企鹅阅读】'
         run: |
           node Scripts/qqyd.js

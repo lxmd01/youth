@@ -31,14 +31,11 @@ const wktimess=1200//周奖励领取标准，默认1200分钟
 
 const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'
 
-let ReadArr = [], Youth = '',readscore = [],qqreadheaderVal = '',qqreadtimeurlVal = '',qqreadtimeheaderVal = '';
+let qqreadheaderVal = '',qqreadtimeurlVal = '',qqreadtimeheaderVal = '';
 
-	ReadArr = process.env.QQREAD_HEADER
-	Youth = process.env.QQREAD_TIMEBODY
-	readscore = process.env.QQREAD_TIMEHEADER
-        qqreadheaderVal = ReadArr
-        qqreadtimeurlVal = Youth
-        qqreadtimeheaderVal = readscore
+	qqreadheaderVal= process.env.QQREAD_HEADER
+	qqreadtimeurlVal = process.env.QQREAD_TIMEBODY
+	qqreadtimeheaderVal = process.env.QQREAD_TIMEHEADER
 
 var tz=''
 

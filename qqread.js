@@ -29,29 +29,50 @@ const maxtime=20//每日上传时长限制，默认20小时
 
 const wktimess=1200//周奖励领取标准，默认1200分钟
 
-let qqreadheaderVal = [] ,qqreadtimeurlVal = [],
-    qqreadtimeheaderVal = [];
+let CookieYouth = [] ,ARTBODYs = [],
+    REDBODYs = [], qqreadheaderVal = [],
+    qqreadtimeurlVal = [], qqreadtimeheaderVal = [];
 
 if ($.isNode()) {
   if (process.env.QQREAD_HEADER && process.env.QQREAD_HEADER.indexOf('#') > -1) {
-  qqreadheaderVal = process.env.QQREAD_HEADER.split('#');
+  CookieYouth = process.env.QQREAD_HEADER.split('#');
   } else {
-      qqreadheaderVal = process.env.QQREAD_HEADER.split()
+      CookieYouth = process.env.QQREAD_HEADER.split()
   };
   
   if (process.env.QQREAD_TIME && process.env.QQREAD_TIME.indexOf('&') > -1) {
-  qqreadtimeurlVal = process.env.QQREAD_TIME.split('&');
+  ARTBODYs = process.env.QQREAD_TIME.split('&');
   } else {
-      qqreadtimeurlVal = process.env.QQREAD_TIME.split()
+      ARTBODYs = process.env.QQREAD_TIME.split()
   };
   
   if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('&') > -1) {
-  qqreadtimeheaderVal = process.env.QQREAD_TIMEHEADER.split('&');
+  REDBODYs = process.env.QQREAD_TIMEHEADER.split('&');
   } else {
-      qqreadtimeheaderVal = process.env.QQREAD_TIMEHEADER.split()
+      REDBODYs = process.env.QQREAD_TIMEHEADER.split()
   };
   
 }
+
+if ($.isNode()) {
+    Object.keys(CookieYouth).forEach((item) => {
+        if (CookieYouth[item]) {
+          qqreadheaderVal.push(CookieYouth[item])
+        }
+      })
+    Object.keys(ARTBODYs).forEach((item) => {
+        if (ARTBODYs[item]) {
+          qqreadtimeurlVal.push(ARTBODYs[item])
+        }
+      })
+    Object.keys(REDBODYs).forEach((item) => {
+        if (REDBODYs[item]) {
+          qqreadtimeheaderVal.push(REDBODYs[item])
+        }
+      })
+    
+
+
 
 
 const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'

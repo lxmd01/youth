@@ -29,53 +29,13 @@ const maxtime=20//每日上传时长限制，默认20小时
 
 const wktimess=1200//周奖励领取标准，默认1200分钟
 
-let CookieYouth = [] ,ARTBODYs = [],
-    REDBODYs = [], qqreadheaderVal = [],
-    qqreadtimeurlVal = [], qqreadtimeheaderVal = [];
-
-if ($.isNode()) {
-  if (process.env.QQREAD_HEADER && process.env.QQREAD_HEADER.indexOf('#') > -1) {
-  CookieYouth = process.env.QQREAD_HEADER.split('#');
-  } else {
-      CookieYouth = process.env.QQREAD_HEADER.split()
-  };
-  
-  if (process.env.QQREAD_TIME && process.env.QQREAD_TIME.indexOf('&') > -1) {
-  ARTBODYs = process.env.QQREAD_TIME.split('&');
-  } else {
-      ARTBODYs = process.env.QQREAD_TIME.split()
-  };
-  
-  if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('&') > -1) {
-  REDBODYs = process.env.QQREAD_TIMEHEADER.split('&');
-  } else {
-      REDBODYs = process.env.QQREAD_TIMEHEADER.split()
-  };
-  
-}
-
-if ($.isNode()) {
-    Object.keys(CookieYouth).forEach((item) => {
-        if (CookieYouth[item]) {
-          qqreadheaderVal.push(CookieYouth[item])
-        }
-      })
-    Object.keys(ARTBODYs).forEach((item) => {
-        if (ARTBODYs[item]) {
-          qqreadtimeurlVal.push(ARTBODYs[item])
-        }
-      })
-    Object.keys(REDBODYs).forEach((item) => {
-        if (REDBODYs[item]) {
-          qqreadtimeheaderVal.push(REDBODYs[item])
-        }
-      })
-    
-
-
-
-
 const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'
+
+const Secrets = {
+    qqreadheaderVal: process.env.QQREAD_HEADER,
+    qqreadtimeurlVal: process.env.QQREAD_TIMEBODY,
+    qqreadtimeheaderVal: process.env.QQREAD_TIMEHEADER,
+};
 
 var tz=''
 
@@ -166,6 +126,10 @@ $.done();//结束
 
 //任务列表
 function qqreadtask() {
+//console.log(` 当前执行时间:${new Date().toString()}`);
+console.log(`国际时间 (UTC+00)：${new Date().toLocaleString()}`)
+console.log(`北京时间 (UTC+08)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}\n`)
+
 return new Promise((resolve, reject) => {
 
   const toqqreadtaskurl ={url: 'https://mqqapi.reader.qq.com/mqq/red_packet/user/page?fromGuid=',

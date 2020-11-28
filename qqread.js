@@ -36,9 +36,9 @@ qqreadheaderVal= process.env.QQREAD_HEADER
 qqreadtimeurlVal= process.env.QQREAD_TIMEBODY
 qqreadtimeheaderVal= process.env.QQREAD_TIMEHEADER
         
-console.log(${qqreadheaderVal}+"---")
-console.log(qqreadtimeheaderVal+"3333")
-console.log(qqreadtimeurlVal+"333")
+console.log`[${jsname}] 获取Cookie: 成功,qqreadheaderVal: ${qqreadheaderVal}`)
+console.log(qqreadtimeheaderVal)
+console.log(qqreadtimeurlVal")
 
 var tz=''
 

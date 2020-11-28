@@ -34,13 +34,9 @@ const Secrets = {
 	qqreadheaderVal: process.env.QQREAD_HEADER,
 	qqreadtimeurlVal: process.env.QQREAD_TIMEBODY,
 	qqreadtimeheaderVal: process.env.QQREAD_TIMEHEADER,
-	
 };
 
-
-console.log(qqreadheaderVal)
 var tz=''
-
 
 
 function all()

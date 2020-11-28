@@ -32,9 +32,9 @@ const wktimess=1200//周奖励领取标准，默认1200分钟
 const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'
 
 
-var qqreadheaderVal = process.env.QQREAD_HEADER
-var qqreadtimeurlVal = process.env.QQREAD_TIMEBODY
-var qqreadtimeheaderVal = process.env.QQREAD_TIMEHEADER
+qqreadheaderVal = $.getdata(process.env.QQREAD_HEADER)
+qqreadtimeurlVal =  $.getdata(process.env.QQREAD_TIMEBODY)
+qqreadtimeheaderVal =  $.getdata(process.env.QQREAD_TIMEHEADER)
         
 console.log(qqreadheaderVal+"---")
 console.log(qqreadtimeheaderVal+"3333")

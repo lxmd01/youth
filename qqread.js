@@ -30,9 +30,16 @@ const maxtime=20//每日上传时长限制，默认20小时
 const wktimess=1200//周奖励领取标准，默认1200分钟
 
 const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'
-const qqreadheaderVal = process.env.QQREAD_HEADER
-const qqreadtimeurlVal = process.env.QQREAD_TIMEBODY
-const qqreadtimeheaderVal = process.env.QQREAD_TIMEHEADER
+const Secrets = {
+	qqreadheaderVal: process.env.QQREAD_HEADER,
+	qqreadtimeurlVal: process.env.QQREAD_TIMEBODY,
+	qqreadtimeheaderVal: process.env.QQREAD_TIMEHEADER,
+	PUSH_KEY: process.env.PUSH_KEY, //server酱推送消息
+	BARK_PUSH: process.env.BARK_PUSH, //Bark推送
+	TG_BOT_TOKEN: process.env.TG_BOT_TOKEN, //TGBot推送Token
+	TG_USER_ID: process.env.TG_USER_ID, //TGBot推送成员ID
+};
+
 
 console.log(qqreadheaderVal)
 var tz=''

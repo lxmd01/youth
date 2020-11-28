@@ -36,7 +36,6 @@ let qqreadheaderVal = "",qqreadtimeurlVal = "",qqreadtimeheaderVal = "";
 	qqreadheaderVal= process.env.QQREAD_HEADER
 	qqreadtimeurlVal = process.env.QQREAD_TIMEBODY
 	qqreadtimeheaderVal = process.env.QQREAD_TIMEHEADER
-var qqreadheaderVal
 
 
 var tz=''

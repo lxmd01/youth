@@ -31,14 +31,14 @@ const wktimess=1200//周奖励领取标准，默认1200分钟
 
 const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'
 
-let qqreadheaderVal = "",qqreadtimeurlVal = "",qqreadtimeheaderVal = "", qqred = "",qqredtime = "",qqredtimes = "";
+let qqreadheaderVal,qqreadtimeurlVal,qqreadtimeheaderVal, qqred,qqredtime,qqredtimes;
 
 	qqred = process.env.QQREAD_HEADER
 	qqredtime = process.env.QQREAD_TIMEBODY
 	qqredtimes = process.env.QQREAD_TIMEHEADER
-        qqreadheaderVal = JSON.stringify(qqred)
-        qqreadtimeurlVal = qqredtime
-        qqreadtimeheaderVal = JSON.stringify(qqredtimes)
+        qqreadheaderVal :JSON.stringify(qqred)
+        qqreadtimeurlVal : qqredtime
+        qqreadtimeheaderVal : JSON.stringify(qqredtimes)
         
 
 

@@ -29,11 +29,16 @@ const maxtime=20//每日上传时长限制，默认20小时
 
 const wktimess=1200//周奖励领取标准，默认1200分钟
 
+if "QQREAD_HEADER" in os.environ:
+    """
+    判断是否运行自GitHub action,"QQREAD_HEADER" 该参数与 repo里的Secrets的名称保持一致
+    """
+    print("执行自GitHub action")
+    qqreadheaderVal = os.environ["QQREAD_HEADER"]
+    qqreadtimeurlVal= os.environ["QQREAD_TIME"]
+    qqreadtimeheaderVal= os.environ["QQREAD_TIMEHEADER"]
 
 const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'
-const qqreadheaderVal = JSON.stringify({"ywsession":"5qnakn0egh49omrxrno79g667n16tvlz","Cookie":"ywguid=2326382795;ywkey=ywUMkKhJlaOf;platform=ios;channel=mqqmina;mpVersion=0.29.4","Connection":"keep-alive","Content-Type":"application/json","Accept":"*/*","Host":"mqqapi.reader.qq.com","User-Agent":"QQ/8.4.17.638 CFNetwork/1197 Darwin/20.0.0","Referer":"https://appservice.qq.com/1110657249/0.29.4/page-frame.html","Accept-Language":"zh-cn","Accept-Encoding":"gzip, deflate, br","mpversion":"0.29.4"})
-const qqreadtimeurlVal = 'https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=1132&refer=-1&bid=130833&readTime=2190&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A2190%2C%22pay_status%22%3A4%7D%7D%5D&sp=-1'
-const qqreadtimeheaderVal= JSON.stringify({"ywsession":"5qnakn0egh49omrxrno79g667n16tvlz","Cookie":"ywguid=2326382795;ywkey=ywUMkKhJlaOf;platform=ios;channel=mqqmina;mpVersion=0.29.4;qq_ver=8.4.17;os_ver=iOS 14.0;mpos_ver=1.21.0;platform=ios;openid=E21BFA85D9BC2F28777798DE7774887D","Connection":"keep-alive","Content-Type":"application/json","Accept":"*/*","Host":"mqqapi.reader.qq.com","User-Agent":"QQ/8.4.17.638 CFNetwork/1197 Darwin/20.0.0","Referer":"https://appservice.qq.com/1110657249/0.29.4/page-frame.html","Accept-Language":"zh-cn","Accept-Encoding":"gzip, deflate, br","mpversion":"0.29.4"})
 
 var tz=''
 all()

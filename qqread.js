@@ -29,19 +29,35 @@ const maxtime=20//每日上传时长限制，默认20小时
 
 const wktimess=1200//周奖励领取标准，默认1200分钟
 
-if "QQREAD_HEADER" in os.environ:
-    """
-    判断是否运行自GitHub action,"QQREAD_HEADER" 该参数与 repo里的Secrets的名称保持一致
-    """
-    print("执行自GitHub action")
-    qqreadheaderVal = os.environ["QQREAD_HEADER"]
-    qqreadtimeurlVal= os.environ["QQREAD_TIME"]
-    qqreadtimeheaderVal= os.environ["QQREAD_TIMEHEADER"]
+let qqreadheaderVal = [] ,qqreadtimeurlVal = [],
+    qqreadtimeheaderVal = [];
+
+if ($.isNode()) {
+  if (process.env.QQREAD_HEADER && process.env.QQREAD_HEADER.indexOf('#') > -1) {
+  qqreadheaderVal = process.env.QQREAD_HEADER.split('#');
+  } else {
+      qqreadheaderVal = process.env.QQREAD_HEADER.split()
+  };
+  
+  if (process.env.QQREAD_TIME && process.env.QQREAD_TIME.indexOf('&') > -1) {
+  qqreadtimeurlVal = process.env.QQREAD_TIME.split('&');
+  } else {
+      qqreadtimeurlVal = process.env.QQREAD_TIME.split()
+  };
+  
+  if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('&') > -1) {
+  qqreadtimeheaderVal = process.env.QQREAD_TIMEHEADER.split('&');
+  } else {
+      qqreadtimeheaderVal = process.env.QQREAD_TIMEHEADER.split()
+  };
+  
+}
+
 
 const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'
 
 var tz=''
-all()
+
 
 
 function all()

@@ -18,12 +18,21 @@ jobs:
         QQREAD_HEADER: ${{ secrets.QQREAD_HEADER }}
         QQREAD_TIMEHEADER: ${{ secrets.QQREAD_TIMEHEADER }}
         QQREAD_TIMEURL: ${{ secrets.QQREAD_TIMEURL }}
-    steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 14.x
+  - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: lxmd01/youth
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: ${{ matrix.node-version }}
+      - name: Cache node_modules
+        uses: actions/cache@v2 # 使用 GitHub 官方的缓存 Action。
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
       - name: npm install 
         if: env.QQREAD_HEADER
         run: |

@@ -34,7 +34,7 @@ const wktimess=1200//周奖励领取标准，默认1200分钟
 const qqreadurlVal = "https://mqqapi.reader.qq.com/mqq/user/init";
 let qqreadheaderVal, qqreadtimeurlVal, qqreadtimeheaderVal,num = 0;
 const cookiesArr = [];
-
+var tz = "";
 // catch value from Action Secret.
 let headers = [], timeurls = [], timeheaders = [],headersarr = [],timeurlsArr = [],timeheadersArr = [];
 
@@ -69,11 +69,12 @@ cookiesArr.push(json_temp);
 qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
 qqreadtimeurlVal = cookiesArr[index].qqreadtimeurlVal;
 qqreadtimeheaderVal = cookiesArr[index].qqreadtimeheaderVal;	
-await all();
+
 $.index = index + 1	
 }
+await all();	
 })()
-var tz = "";
+
 
 
 

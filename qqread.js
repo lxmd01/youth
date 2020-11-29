@@ -20,7 +20,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
 console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
 const logs = 0;   //0为关闭日志，1为开启
-const notifyInterval=1
+const notifyInterval=2
 //0为关闭通知，1为所有通知，2为宝箱领取成功通知，3为宝箱每18次通知一次
 
 const dd=1//单次任务延迟,默认1秒
@@ -71,6 +71,7 @@ qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
   qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
   qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;	
 for(var i=0;i<18;i++){ 
+	console.log(`-------------------------\n\n开始企鹅阅读第${$.num=num+1}个账号阅读`)
 (function(i) {
   setTimeout(
    function() {
@@ -109,7 +110,8 @@ else if (i==15) qqreadpick();//领周时长奖励
 else if (i==16) showmsg();//通知
 	   
       else if (i == 17 && num < cookiesArr.length - 1) {
-            num += 1;
+	   num += 1
+	      
             all();
           } else if (i == 17 && num == cookiesArr.length - 1) {
             $.done();

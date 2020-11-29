@@ -30,21 +30,17 @@ const maxtime=20//每日上传时长限制，默认20小时
 const wktimess=1200//周奖励领取标准，默认1200分钟
 
 const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'
-let qqreadheaderVal, qqreadtimeurlVal, qqreadtimeheaderVal;
+let qqreadheaderVal, qqreadtimeurlVal, qqreadtimeheaderVal,YouthBody,Youthy,Youdy;
 
 
+YouthBody= process.env.QQREAD_HEADER;
+Youthy= process.env.QQREAD_TIMEBODY;
+Youdy= process.env.QQREAD_TIMEHEADER;
 
 
-
- qqreadheaderVal= os.environ["QQREAD_HEADER"]
-qqreadtimeurlVal= os.environ["QQREAD_TIMEBODY"]
-qqreadtimeheaderVal= os.environ["QQREAD_TIMEHEADER"]
-	
-	
-
-
-        
-
+qqreadheaderVal.push(YouthBody)
+qqreadtimeurlVal.push(Youthy)       
+qqreadtimeheaderVal.push(Youdy)
 
 var tz=''
 

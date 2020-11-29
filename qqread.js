@@ -32,7 +32,7 @@ const maxtime=20//每日上传时长限制，默认20小时
 const wktimess=1200//周奖励领取标准，默认1200分钟
 
 const qqreadurlVal = "https://mqqapi.reader.qq.com/mqq/user/init";
-let qqreadheaderVal, qqreadtimeurlVal, qqreadtimeheaderVal;
+let qqreadheaderVal,ReadArr = [], qqreadtimeurlVal, qqreadtimeheaderVal;
 const cookiesArr = [];
 // catch value from Action Secret.
 let headers = [], timeurls = [], timeheaders = [],headersarr = [],timeurlsArr = [],timeheadersArr = [];
@@ -61,17 +61,22 @@ for (let index = 0; index < headers.length; index++) {
   json_temp.qqreadtimeheaderVal = timeheaders[index];
   cookiesArr.push(json_temp);
 }
+Object.keys(cookiesArr).forEach((item) => {
+        if (cookiesArr[item]) {
+          ReadArr.push(cookiesArr[item])
+        }
+    })
 
 !(async () => {
-  if (!cookiesArr[0]) {
+  if (!ReadArr[0]) {
     console.log($.name, '【提示】请把抓包的请求体填入Github 的 Secrets 中，请以&隔开')
     return;
   }
-  for (let i = 0; i < cookiesArr.length; i++) {
-    if (cookiesArr[i]) {
-      qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
- qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
- qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;
+  for (let i = 0; i <ReadArr.length; i++) {
+    if (ReadArr[i]) {
+      qqreadheaderVal = ReadArr[i].qqreadheaderVal;
+ qqreadtimeurlVal = ReadArr[i].qqreadtimeurlVal;
+ qqreadtimeheaderVal = ReadArr[i].qqreadtimeheaderVal;
 	    
       $.index = i + 1;
       console.log(`-------------------------\n\n开始中青看点第${$.index}次阅读`)

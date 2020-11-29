@@ -709,10 +709,10 @@ console.log(tz)
 if (notifyInterval==1)
 notify.sendNotify(jsname,tz,'')//显示所有通知
 
-else if (notifyInterval==2&&box.data.amount>=0)
+else if (notifyInterval==2&&task.data.treasureBox.doneFlag==0)
 notify.sendNotify(jsname,tz,'')//宝箱领取成功通知
 
-else if (notifyInterval==3&&box.data.count==0||box.data.count==18||box.data.count==36||box.data.count==54||box.data.count==72)
+else if (notifyInterval==3&&task.data.treasureBox.count==0||task.data.treasureBox.count==15||task.data.treasureBox.count==30||task.data.treasureBox.count==45||task.data.treasureBox.count==60)
 notify.sendNotify(jsname,tz,'')//宝箱每18次通知一次
 
 tz='' ;

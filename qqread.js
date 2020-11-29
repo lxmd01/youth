@@ -19,7 +19,7 @@ const $ = Env(jsname)
 const notify = $.isNode() ? require('./sendNotify') : '';
 console.log(`\n========= 脚本执行时间(TM)：${new Date(new Date().getTime() + 0 * 60 * 60 * 1000).toLocaleString('zh', {hour12: false})} =========\n`)
 const logs = 0;   //0为关闭日志，1为开启
-const notifyInterval=3
+const notifyInterval=1
 //0为关闭通知，1为所有通知，2为宝箱领取成功通知，3为宝箱每18次通知一次
 
 const dd=1//单次任务延迟,默认1秒

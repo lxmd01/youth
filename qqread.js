@@ -33,14 +33,10 @@ const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'
 const qqreadtimeurlVal = 'https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=1132&refer=-1&bid=130833&readTime=2190&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A2190%2C%22pay_status%22%3A4%7D%7D%5D&sp=-1'
 let cookiesArr = [], qqreadheaderVal = '',
     readArr = [], qqreadtimeheaderVal='',
- 
 let CookieYouth = [],
     READTIME = [];
 //const qqreadheaderVall= process.env.QQREAD_HEADER
 //const qqreadtimeheaderVall=process.env.QQREAD_TIMEHEADER
-const qqreadheaderVal=JSON.stringify(process.env.QQREAD_HEADER)
-const qqreadtimeheaderVal=JSON.stringify(process.env.QQREAD_TIMEHEADER)
-
 if ($.isNode()) {
   if (process.env.QQREAD_HEADER && process.env.QQREAD_HEADER.indexOf('#') > -1) {
   CookieYouth = process.env.QQREAD_HEADER.split('#');
@@ -48,7 +44,6 @@ if ($.isNode()) {
       CookieYouth = process.env.QQREAD_HEADER.split()
   };
   
- 
   if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('&') > -1) {
   READTIME = process.env.QQREAD_TIMEHEADER.split('&');
   }else {

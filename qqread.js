@@ -34,7 +34,7 @@ const qqreadtimeurlVal = 'https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?sc
 let cookiesArr = [], qqreadheaderVal = '',
     readArr = [], qqreadtimeheaderVal='',
  
-let CookieYouth = [] ,
+let CookieYouth = [],
     READTIME = [];
 //const qqreadheaderVall= process.env.QQREAD_HEADER
 //const qqreadtimeheaderVall=process.env.QQREAD_TIMEHEADER

@@ -135,7 +135,7 @@ else if (i==16) showmsg();//通知
    //else if (i == 17 && num < cookiesArr.length - 1) {
 	     //num += 1    
          //  all(); & num == cookiesArr.length - 1
-         } 
+         //} 
 	   else if (i == 17){
 		  
             $.done();

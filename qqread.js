@@ -58,7 +58,7 @@ if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') 
 
 
 
-
+!(async () => {
 
 for (let index = 0; index < headers.length; index++) {
  const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
@@ -66,17 +66,19 @@ for (let index = 0; index < headers.length; index++) {
 json_temp.qqreadtimeurlVal = timeurls[index];
 json_temp.qqreadtimeheaderVal = timeheaders[index];
 cookiesArr.push(json_temp);
-all();	
+qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
+qqreadtimeurlVal = cookiesArr[index].qqreadtimeurlVal;
+qqreadtimeheaderVal = cookiesArr[index].qqreadtimeheaderVal;	
+all();
 $.index = index + 1	
 }
+})()
 var tz = "";
 
 
 
 function all(){
-qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
-qqreadtimeurlVal = cookiesArr[index].qqreadtimeurlVal;
- qqreadtimeheaderVal = cookiesArr[index].qqreadtimeheaderVal;		
+		
 for(var i=0;i<18;i++)
  { (function(i) {
             setTimeout(function() {

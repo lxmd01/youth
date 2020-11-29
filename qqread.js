@@ -64,7 +64,19 @@ for (let index = 0; index < headers.length; index++) {
   cookiesArr.push(myObj);
 }
 
-
+ !(async () => {
+  if (!cookiesArr[0]) {
+    $.msg($.name, '【提示】请先获取中青看点一cookie')
+    return;
+  }
+  for (let i = 0; i < cookiesArr.length; i++) {
+    if (cookiesArr[i]) {
+qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
+qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
+qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheadeVal;
+      $.index = i + 1;
+      console.log(`-------------------------\n\n开始【中青看点${$.index}】`)
+    }
 
 
 
@@ -73,14 +85,12 @@ for (let index = 0; index < headers.length; index++) {
 
 
 var tz=''
-let num = 0
+
 all()
 
 function all(){
 	
-qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
-qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
-qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
+
 for(var i=0;i<18;i++)
  { (function(i) {
             setTimeout(function() {

@@ -65,6 +65,8 @@ for (let index = 0; index < headers.length; index++) {
   json_temp.qqreadtimeurlVal = timeurls[index];
   json_temp.qqreadtimeheaderVal = timeheaders[index];
   cookiesArr.push(json_temp);
+  $.index = i + 1;
+      console.log(`-------------------------\n\n开始中青看点第${$.index}次阅读`)	
 }
 
 var tz=''

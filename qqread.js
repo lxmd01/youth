@@ -32,9 +32,8 @@ const maxtime=20//每日上传时长限制，默认20小时
 const wktimess=1200//周奖励领取标准，默认1200分钟
 
 const qqreadurlVal = "https://mqqapi.reader.qq.com/mqq/user/init";
-let qqreadheaderVal, qqreadtimeurlVal, qqreadtimeheaderVal,num = 0;
+let qqreadheaderVal, qqreadtimeurlVal, qqreadtimeheaderVal;
 const cookiesArr = [];
-var tz = "";
 // catch value from Action Secret.
 let headers = [], timeurls = [], timeheaders = [],headersarr = [],timeurlsArr = [],timeheadersArr = [];
 
@@ -58,30 +57,26 @@ if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') 
 
 
 
-!(async () => {
-for (let i = 0; i< headers.length; i++) {
- const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
- json_temp.qqreadheaderVal = headers[1];
-json_temp.qqreadtimeurlVal = timeurls[1];
-json_temp.qqreadtimeheaderVal = timeheaders[1];
-cookiesArr.push(json_temp);
-qqreadheaderVal = cookiesArr[1].qqreadheaderVal;
-qqreadtimeurlVal = cookiesArr[1].qqreadtimeurlVal;
-qqreadtimeheaderVal = cookiesArr[1].qqreadtimeheaderVal;
-
-$.i = i + 1;
-console.log(`-------------------------\n\n开始企鹅阅读第${$.i}个账号`)
+for (let index = 0; index < headers.length; index++) {
+  const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
+  json_temp.qqreadheaderVal = headers[index];
+  json_temp.qqreadtimeurlVal = timeurls[index];
+  json_temp.qqreadtimeheaderVal = timeheaders[index];
+  cookiesArr.push(json_temp);
+	console.log(`-------------------------\n\n开始企鹅阅读第${$.index}个账号`)
 }
-	
-await all();	
- console.log(`-------------------------\n\n企鹅阅读共完成${$.i}个账号，阅读请求全部结束`)	
-})()
+
+var tz = "";
+let num = 0;
+all();
 
 
 
 
 function all(){
-		
+ qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
+  qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
+  qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;		
 for(var i=0;i<18;i++)
  { (function(i) {
             setTimeout(function() {

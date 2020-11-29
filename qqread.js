@@ -39,19 +39,14 @@ if ($.isNode()) {
   YouthBody = process.env.QQREAD_HEADER.split('#');
   } else {
       YouthBody= process.env.QQREAD_HEADER.split()
+	 
   };
-  
- 
-      Youthy= process.env.QQREAD_TIMEBODY.split()
- 
-  
+  Youthy= process.env.QQREAD_TIMEBODY.split()
   if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('&') > -1) {
   Youdy = process.env.QQREAD_TIMEHEADER.split('&');
   } else {
       Youdy= process.env.QQREAD_TIMEHEADER.split()
-  };
-  
- 
+  }; 
 }
  
 if ($.isNode()) {
@@ -66,7 +61,7 @@ if ($.isNode()) {
           qqreadtimeheaderVal.push(Youdy[item])
         }
       })
-
+const qqreadtimeurlVal= YouthBody
 
 
 var tz=''

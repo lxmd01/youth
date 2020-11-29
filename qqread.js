@@ -60,17 +60,17 @@ if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') 
 
 !(async () => {
 
-for (let index = 0; index < headers.length; index++) {
+for (let i = 0; i< headers.length; index++) {
  const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
- json_temp.qqreadheaderVal = headers[index];
-json_temp.qqreadtimeurlVal = timeurls[index];
-json_temp.qqreadtimeheaderVal = timeheaders[index];
+ json_temp.qqreadheaderVal = headers[i];
+json_temp.qqreadtimeurlVal = timeurls[i];
+json_temp.qqreadtimeheaderVal = timeheaders[i];
 cookiesArr.push(json_temp);
-qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
-qqreadtimeurlVal = cookiesArr[index].qqreadtimeurlVal;
-qqreadtimeheaderVal = cookiesArr[index].qqreadtimeheaderVal;	
+qqreadheaderVal = cookiesArr[0].qqreadheaderVal;
+qqreadtimeurlVal = cookiesArr[0].qqreadtimeurlVal;
+qqreadtimeheaderVal = cookiesArr[0].qqreadtimeheaderVal;	
 
-$.index = index + 1;
+$.index = i + 1;
 console.log(`-------------------------\n\n开始企鹅阅读第${$.index}个账号`)
 }
 await all();	

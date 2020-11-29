@@ -64,7 +64,7 @@ for (let index = 0; index < headers.length; index++) {
   json_temp.qqreadtimeheaderVal = timeheaders[index];
   cookiesArr.push(json_temp);
 	
-index=index+1	
+$.index=index+1	
 console.log(`-------------------------\n\n开始企鹅阅读第${$.index}个账号`)	
 }
 
@@ -76,9 +76,9 @@ all();
 
 
 function all(){
- qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
-  qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
-  qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;		
+ qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
+  qqreadtimeurlVal = cookiesArr[index].qqreadtimeurlVal;
+  qqreadtimeheaderVal = cookiesArr[index].qqreadtimeheaderVal;		
 for(var i=0;i<18;i++)
  { (function(i) {
             setTimeout(function() {

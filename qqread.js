@@ -41,11 +41,9 @@ if ($.isNode()) {
       YouthBody= process.env.QQREAD_HEADER.split()
   };
   
-  if (process.env.QQREAD_TIMEBODY && process.env.QQREAD_TIMEBODY.indexOf('&') > -1) {
-	  Youthy = process.env.QQREAD_TIMEBODY('&');
-  } else {
+ 
       Youthy= process.env.QQREAD_TIMEBODY.split()
-  };
+ 
   
   if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('&') > -1) {
   Youdy = process.env.QQREAD_TIMEHEADER.split('&');
@@ -55,10 +53,21 @@ if ($.isNode()) {
   
  
 }
-    
-qqreadheaderVal=String(YouthBody)
-qqreadtimeurlVal=String(Youthy)       
-qqreadtimeheaderVal=String(Youdy)
+ 
+if ($.isNode()) {
+    Object.keys(YouthBody).forEach((item) => {
+        if (YouthBody[item]) {
+          qqreadheaderVal.push(YouthBody[item])
+        }
+      })
+   
+    Object.keys(Youdy).forEach((item) => {
+        if (Youdy[item]) {
+          qqreadtimeheaderVal.push(Youdy[item])
+        }
+      })
+
+
 
 var tz=''
 

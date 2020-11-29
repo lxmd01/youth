@@ -31,55 +31,48 @@ const maxtime=20//每日上传时长限制，默认20小时
 
 const wktimess=1200//周奖励领取标准，默认1200分钟
 
-const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'
-
-let qqreadheaderVal,qqreadtimeurlVal,qqreadtimeheaderVal;
-
+const qqreadurlVal = "https://mqqapi.reader.qq.com/mqq/user/init";
+let qqreadheaderVal, qqreadtimeurlVal, qqreadtimeheaderVal;
 const cookiesArr = [];
-var tz=''
 
 // catch value from Action Secret.
 let headers = [], timeurls = [], timeheaders = [];
 
 if (process.env.QQREAD_HEADER && process.env.QQREAD_HEADER.indexOf('#') > -1) {
   headers = process.env.QQREAD_HEADER.split('#');
- console.log(`您选择的是用"#"隔开\n`)	
 } else {
   headers = process.env.QQREAD_HEADER.split();
   };
 if (process.env.QQREAD_TIMEURL && process.env.QQREAD_TIMEURL.indexOf('\n') > -1) {
-timeurls = process.env.QQREAD_TIMEURL.split('\n');
-	  console.log(`您选择的是用换行隔开\n`)
+  timeurls = process.env.QQREAD_TIMEURL.split('\n');
 } else {
- timeurls = process.env.QQREAD_TIMEURL.split();
-};
+  timeurls = process.env.QQREAD_TIMEURL.split();
+  };
 if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') > -1) {
   timeheaders = process.env.QQREAD_TIMEHEADER.split('#');
-	  console.log(`您选择的是用"#"隔开\n`)
 } else {
   timeheaders = process.env.QQREAD_TIMEHEADER.split();
- };
+  };
 
-for (let i = 0; i < headers.length; i++) {
+for (let index = 0; index < headers.length; index++) {
   const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
-  json_temp.qqreadheaderVal = headers[i];
-  json_temp.qqreadtimeurlVal = timeurls[i];
-  json_temp.qqreadtimeheaderVal = timeheaders[i];
+  json_temp.qqreadheaderVal = headers[index];
+  json_temp.qqreadtimeurlVal = timeurls[index];
+  json_temp.qqreadtimeheaderVal = timeheaders[index];
   cookiesArr.push(json_temp);
-qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
-  qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
-  qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;	
-  $.index = i+ 1;
-      console.log(`-------------------------\n\n企鹅阅读第${$.index}次阅读`)	
- 
-	all()
 }
+
+var tz = "";
+let num = 0;
+all();
 
 
 
 
 function all(){
-	
+	qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
+  qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
+  qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
 
 for(var i=0;i<18;i++)
  { (function(i) {

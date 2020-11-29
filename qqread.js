@@ -17,6 +17,7 @@
 const jsname='企鹅读书'
 const $ = Env(jsname)
 const notify = $.isNode() ? require('./sendNotify') : '';
+console.log(`\n========= 脚本执行时间(TM)：${new Date(new Date().getTime() + 0 * 60 * 60 * 1000).toLocaleString('zh', {hour12: false})} =========\n`)
 const logs = 0;   //0为关闭日志，1为开启
 const notifyInterval=3
 //0为关闭通知，1为所有通知，2为宝箱领取成功通知，3为宝箱每18次通知一次
@@ -702,17 +703,16 @@ function showmsg() {
 
 	
 console.log(tz)
-	
+tz=''
 if (notifyInterval==1)
 notify.sendNotify(jsname,tz,'')//显示所有通知
-tz=''
+
 else if (notifyInterval==2&&box.data.amount>=0)
 notify.sendNotify(jsname,tz,'')//宝箱领取成功通知
-tz=''
 
 else if (notifyInterval==3&&box.data.count==0||box.data.count==18||box.data.count==36||box.data.count==54||box.data.count==72)
 notify.sendNotify(jsname,tz,'')//宝箱每18次通知一次
-tz=''
+
 
 
 }

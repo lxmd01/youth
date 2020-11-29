@@ -66,12 +66,14 @@ for (let i = 0; i < headers.length; i++) {
   json_temp.qqreadtimeheaderVal = timeheaders[i];
   cookiesArr.push(json_temp);
   $.index = i+ 1;
-      console.log(`-------------------------\n\n开始中青看点第${$.index}次阅读`)	
+      console.log(`-------------------------\n\n企鹅阅读第${$.index}次阅读`)	
+	var tz=''
+let num = 0;
+	all()
 }
 
-var tz=''
-let num = 0;
-all()
+
+
 
 function all(){
 	qqreadheaderVal = cookiesArr[num].qqreadheaderVal;

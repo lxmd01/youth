@@ -55,7 +55,7 @@ if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') 
   };
 
 
-
+var tz = "";
 
 
 
@@ -72,7 +72,7 @@ qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
 $.index=index+1	
 console.log(`-------------------------\n\n开始企鹅阅读第${$.index}个账号`)	
 
-var tz = "";	
+	
 await all();
 await showmsg();	
  }

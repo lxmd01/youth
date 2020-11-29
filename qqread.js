@@ -61,41 +61,19 @@ for (let index = 0; index < headers.length; index++) {
   json_temp.qqreadtimeheaderVal = timeheaders[index];
   cookiesArr.push(json_temp);
 }
-Object.keys(cookiesArr).forEach((item) => {
-        if (cookiesArr[item]) {
-          ReadArr.push(cookiesArr[item])
-        }
-    })
 
-!(async () => {
-  if (!ReadArr[0]) {
-    console.log($.name, '【提示】请把抓包的请求体填入Github 的 Secrets 中，请以&隔开')
-    return;
-  }
-  for (let i = 0; i <ReadArr.length; i++) {
-    if (ReadArr[i]) {
-      qqreadheaderVal = ReadArr[i].qqreadheaderVal;
- qqreadtimeurlVal = ReadArr[i].qqreadtimeurlVal;
- qqreadtimeheaderVal = ReadArr[i].qqreadtimeheaderVal;
-	    
-      $.index = i + 1;
-      console.log(`-------------------------\n\n开始中青看点第${$.index}次阅读`)
-    }
-  await all();
- }
-   console.log(`-------------------------\n\n中青看点共完成${$.index}次阅读，共计获得${readscore}个青豆，阅读请求全部结束`)
-})()
+
 
 
 
 var tz = "";
-//let num = 0;
-//all();
+let num = 0;
+all();
 
 function all(){
-//qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
-// qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
- //qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
+qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
+qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
+ qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
 $.num = num+ 1;
 console.log(`-------------------------\n\n开始企鹅阅读第${$.num}个账号阅读`) 
 for(var i=0;i<18;i++){ 
@@ -136,11 +114,11 @@ else if (i==15) qqreadpick();//领周时长奖励
 	   
 else if (i==16) showmsg();//通知
 	   
-     // else if (i == 17 && num < cookiesArr.length - 1) {
-	      // num += 1    
-           // all();
-         // } && num == cookiesArr.length - 1
-	   else if (i == 17 ) {
+   else if (i == 17 && num < cookiesArr.length - 1) {
+	     num += 1    
+           all();
+         } 
+	   else if (i == 17&& num == cookiesArr.length - 1 ) {
 		  
             $.done();
 		console.log(`-------------------------\n\n企鹅阅读共完成${$.num}个账号阅读，阅读请求全部结束`)  

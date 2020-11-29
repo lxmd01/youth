@@ -35,115 +35,98 @@ const qqreadurlVal = "https://mqqapi.reader.qq.com/mqq/user/init";
 let qqreadheaderVal,ReadArr = [], qqreadtimeurlVal, qqreadtimeheaderVal;
 const cookiesArr = [];
 // catch value from Action Secret.
-let headers = [], timeurls = [], timeheaders = [],headersarr = [],timeurlsArr = [],timeheadersArr = [];
-
-var tz = "";
-
-if (process.env.QQREAD_HEADER && process.env.QQREAD_HEADER.indexOf('#') > -1) {
-  headers = process.env.QQREAD_HEADER.split('#');
-} else {
-  headers = process.env.QQREAD_HEADER.split();
-
-  };
-if (process.env.QQREAD_TIMEURL && process.env.QQREAD_TIMEURL.indexOf('\n') > -1) {
-  timeurls = process.env.QQREAD_TIMEURL.split('\n');
-} else {
-  timeurls= process.env.QQREAD_TIMEURL.split();
-  };
-if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') > -1) {
-  timeheaders = process.env.QQREAD_TIMEHEADER.split('#');
-} else {
-  timeheaders = process.env.QQREAD_TIMEHEADER.split();
-  };
-
+let headers = [], timeurls = [], timeheaders = [];
+if($.isNode()){
+  if (process.env.QQREAD_HEADER && process.env.QQREAD_HEADER.indexOf('#') > -1) {
+    headers = process.env.QQREAD_HEADER.split('#');
+  } else {
+    headers = process.env.QQREAD_HEADER.split();
+    };
+  if (process.env.QQREAD_TIMEURL && process.env.QQREAD_TIMEURL.indexOf('\n') > -1) {
+    timeurls = process.env.QQREAD_TIMEURL.split('\n');
+  } else {
+    timeurls = process.env.QQREAD_TIMEURL.split();
+    };
+  if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') > -1) {
+    timeheaders = process.env.QQREAD_TIMEHEADER.split('#');
+  } else {
+    timeheaders = process.env.QQREAD_TIMEHEADER.split();
+    };
+}  
 for (let index = 0; index < headers.length; index++) {
   const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
   json_temp.qqreadheaderVal = headers[index];
   json_temp.qqreadtimeurlVal = timeurls[index];
   json_temp.qqreadtimeheaderVal = timeheaders[index];
   cookiesArr.push(json_temp);
-
- !(async () => {
-  if (! headers[0]) {
-    $.msg($.name, '【提示】请先获取中青看点一cookie')
-    return;
-  }
-  for (let i = 0; i < headers.length; i++) {
-    if (headers[i]) {
-      qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
-      qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
-      qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;
-     
-      $.index = i + 1;
-      console.log(`-------------------------\n\n开始【中青看点${$.index}】`)
-    }
-await all()
 }
 
 
-
-
-
-//var tz = "";
-//let num = 0;
-//all();
+var tz = "";
+let num = 0;
+all();
 
 function all(){
-//qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
-//qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
- //qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
-//$.num = num+ 1;
-//console.log(`-------------------------\n\n开始企鹅阅读第${$.num}个账号阅读`) 
-for(var i=0;i<18;i++){ 
-(function(i) {
-  setTimeout(
-   function() {
-    if (i==0) qqreadinfo();//用户名
-	   
-    else if (i==1) qqreadconfig();//时长查询
-	   
-     else if (i==2) qqreadtask();//任务列表
-	
-      else if (i==3) qqreadsign();//金币签到
-
-else if (i==4&&task.data.treasureBox.doneFlag==0) qqreadbox();//宝箱
-
-else if (i==5&&task.data.taskList[2].doneFlag==0) qqreadssr1();//阅读金币1
-
-else if (i==6) qqreadtime();//上传时长
-
-else if (i==7&&task.data.taskList[0].doneFlag==0) qqreadtake();//阅豆签到
-
-else if (i==8&&task.data.taskList[1].doneFlag==0) qqreaddayread();//阅读任务
-
-else if (i==9&&task.data.taskList[2].doneFlag==0) qqreadssr2();//阅读金币2
-
-else if (i==10&&task.data.taskList[3].doneFlag==0) qqreadvideo();//视频任务
-
-else if(i==11&&sign.data.videoDoneFlag==0) qqreadsign2();//签到翻倍
-
-else if (i==12&&task.data.treasureBox.videoDoneFlag==0) qqreadbox2();//宝箱翻倍
-
-else if (i==13&&task.data.taskList[2].doneFlag==0) qqreadssr3();//阅读金币3
-
-else if (i==14) qqreadwktime();//周时长查询
-
-else if (i==15) qqreadpick();//领周时长奖励
-	   
-else if (i==16) showmsg();//通知
-	   
-   //else if (i == 17 && num < cookiesArr.length - 1) {
-	     //num += 1    
-         //  all(); & num == cookiesArr.length - 1
-         //} 
-	   else if (i == 17){
+qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
+qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
+ qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
+$.num = num+ 1;
+console.log(`-------------------------\n\n开始企鹅阅读第${$.num}个账号阅读`) 
+function all() {
+  qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
+  qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
+  qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
+  for (var i = 0; i < 18; i++) {
+    (function (i) {
+      setTimeout(
+        function () {
+          if (i == 0) qqreadinfo();
+          //用户名
+          else if (i == 1) qqreadconfig();
+          //时长查询
+          else if (i == 2) qqreadtask();
+          //任务列表
+          else if (i == 3) qqreadsign();
+          //金币签到
+          else if (i == 4 && task.data.treasureBox.doneFlag == 0) qqreadbox();
+          //宝箱
+          else if (i == 5 && task.data.taskList[2].doneFlag == 0) qqreadssr1();
+          //阅读金币1
+          else if (i == 6) qqreadtime();
+          //上传时长
+          else if (i == 7 && task.data.taskList[0].doneFlag == 0) qqreadtake();
+          //阅豆签到
+          else if (i == 8 && task.data.taskList[1].doneFlag == 0)
+            qqreaddayread();
+          //阅读任务
+          else if (i == 9 && task.data.taskList[2].doneFlag == 0) qqreadssr2();
+          //阅读金币2
+          else if (i == 10 && task.data.taskList[3].doneFlag == 0)
+            qqreadvideo();
+          //视频任务
+          else if (i == 11 && task.data.taskList[0].doneFlag==0) qqreadsign2();
+          //签到翻倍
+          else if (i == 12 && task.data.treasureBox.videoDoneFlag == 0)
+            qqreadbox2();
+          //宝箱翻倍
+          else if (i == 13 && task.data.taskList[2].doneFlag == 0) qqreadssr3();
+          //阅读金币3
+          else if (i == 14) qqreadwktime();
+          //周时长查询
+          else if (i == 15) qqreadpick();
+          //领周时长奖励
+          else if (i == 16) showmsg();
+          else if (i == 17 && num < cookiesArr.length - 1) {
+            num += 1;
+            all();
+	   } else if (i == 17 && num == cookiesArr.length - 1) {
 		  
             $.done();
 		console.log(`-------------------------\n\n企鹅阅读共完成${$.num}个账号阅读，阅读请求全部结束`)  
           }
         },
 
-        (i + 1) * dd * 1000
+        (i + 1) * dd * 2000
       );
     })(i);
   }

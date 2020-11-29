@@ -68,7 +68,7 @@ if ($.isNode()) {
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       qqreadheaderVal = JSON.stringify(cookiesArr[i]);
-      QQREAD_TIMEHEADER = JSON.stringify(timeArri[i]);
+      QQREAD_TIMEHEADER = JSON.stringify(timeArr[i]);
       $.index = i + 1;
       console.log(`-------------------------\n\n开始【中青看点${$.index}】`)
     }

@@ -66,13 +66,13 @@ for (let index = 0; index < headers.length; index++) {
   json_temp.qqreadtimeurlVal = timeurls[index];
   json_temp.qqreadtimeheaderVal = timeheaders[index];
   cookiesArr.push(json_temp);
-	 if (cookiesArr[index]){
+	
 	qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
   qqreadtimeurlVal = cookiesArr[index].qqreadtimeurlVal;
   qqreadtimeheaderVal = cookiesArr[index].qqreadtimeheaderVal;
 $.index=index+1	
 console.log(`-------------------------\n\n开始企鹅阅读第${$.index}个账号`)	
-}
+
 var tz = "";	
 await all();
  }

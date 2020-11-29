@@ -70,9 +70,11 @@ qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
 qqreadtimeurlVal = cookiesArr[index].qqreadtimeurlVal;
 qqreadtimeheaderVal = cookiesArr[index].qqreadtimeheaderVal;	
 
-$.index = index + 1	
+$.index = index + 1；
+console.log(`-------------------------\n\n开始企鹅阅读第${$.index}个账号`)
 }
 await all();	
+ console.log(`-------------------------\n\n企鹅阅读共完成${$.index}个账号，阅读请求全部结束`)	
 })()
 
 

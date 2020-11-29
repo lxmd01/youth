@@ -33,11 +33,29 @@ const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'
 let qqreadheaderVal, qqreadtimeurlVal, qqreadtimeheaderVal,YouthBody,Youthy,Youdy;
 
 
-YouthBody= process.env.QQREAD_HEADER;
-Youthy= process.env.QQREAD_TIMEBODY;
-Youdy= process.env.QQREAD_TIMEHEADER;
 
-
+if ($.isNode()) {
+  if (process.env.QQREAD_HEADER && process.env.QQREAD_HEADER.indexOf('#') > -1) {
+  YouthBody = process.env.QQREAD_HEADER.split('#');
+  } else {
+      YouthBody= process.env.QQREAD_HEADER.split()
+  };
+  
+  if (process.env.QQREAD_TIMEBODY && process.env.QQREAD_TIMEBODY.indexOf('&') > -1) {
+ Youthy = process.env.QQREAD_TIMEBODY('&');
+  } else {
+      Youthy= process.env.QQREAD_TIMEBODY.split()
+  };
+  
+  if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('&') > -1) {
+  Youdy = process.env.QQREAD_TIMEHEADER.split('&');
+  } else {
+      Youdy= process.env.QQREAD_TIMEHEADER.split()
+  };
+  
+ 
+}
+    
 qqreadheaderVal=String(YouthBody)
 qqreadtimeurlVal=String(Youthy)       
 qqreadtimeheaderVal=String(Youdy)

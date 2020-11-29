@@ -57,27 +57,29 @@ if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') 
 
 
 
+
+
+!(async () => {
 for (let index = 0; index < headers.length; index++) {
   const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
   json_temp.qqreadheaderVal = headers[index];
   json_temp.qqreadtimeurlVal = timeurls[index];
   json_temp.qqreadtimeheaderVal = timeheaders[index];
   cookiesArr.push(json_temp);
-	qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
-  qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
-  qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
-num=num+1
+	 if (cookiesArr[index]){
+	qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
+  qqreadtimeurlVal = cookiesArr[index].qqreadtimeurlVal;
+  qqreadtimeheaderVal = cookiesArr[index].qqreadtimeheaderVal;
 $.index=index+1	
-	
 console.log(`-------------------------\n\n开始企鹅阅读第${$.index}个账号`)	
 }
-
-var tz = "";
-;
-all();
-
-
-
+var tz = "";	
+await all();
+ }
+  console.log(`-------------------------\n\n中青看点共完成${$.index}次阅读，阅读请求全部结束`)
+})()
+ .catch((e) => $.logErr(e))
+ .finally(() => $.done())
 
 function all(){
 		

@@ -708,14 +708,14 @@ console.log(tz)
 
 if (notifyInterval==1)
 notify.sendNotify(jsname,tz,'')//显示所有通知
-
+var tz=''
 else if (notifyInterval==2&&box.data.amount>=0)
 notify.sendNotify(jsname,tz,'')//宝箱领取成功通知
-
+var tz=''
 else if (notifyInterval==3&&box.data.count==0||box.data.count==18||box.data.count==36||box.data.count==54||box.data.count==72)
 notify.sendNotify(jsname,tz,'')//宝箱每18次通知一次
 
-tz=''
+var tz=''
 
 }
 

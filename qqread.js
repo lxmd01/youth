@@ -55,57 +55,23 @@ if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') 
   timeheaders = process.env.QQREAD_TIMEHEADER.split();
   };
 
-if ($.isNode()) {
-    Object.keys(headers ).forEach((item) => {
-        if (headers [item]) {
-          headersarr.push(headers[item])
-        }
-      })
-    Object.keys(timeurls).forEach((item) => {
-        if (timeurls[item]) {
-          timeurlsArr.push(timeurls[item])
-        }
-      })
-    Object.keys(timeheaders).forEach((item) => {
-        if (timeheaders[item]) {
-          timeheadersArr.push(timeheaders[item])
-        }
-      })
-	
-   !(async () => {
-  if (!headersarr[0]) {
-    $.msg($.name, '【提示】请先获取中青看点一cookie')
-    return;
-  }
-  for (let i = 0; i < headersarr.length; i++) {
-    if (headersarr[i]) {
-const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};    
-     json_temp.qqreadheaderVal = headers[i];
-  json_temp.qqreadtimeurlVal = timeurls[i];
-  json_temp.qqreadtimeheaderVal = timeheaders[i];
-  cookiesArr.push(json_temp);
-	qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
-  qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
-  qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;	    
-      $.index = i + 1;
-   
-    } 
 
 
 
 
-//for (let index = 0; index < headers.length; index++) {
-//  const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
- // json_temp.qqreadheaderVal = headers[index];
-//  json_temp.qqreadtimeurlVal = timeurls[index];
-//  json_temp.qqreadtimeheaderVal = timeheaders[index];
-//  cookiesArr.push(json_temp);
-//qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
- // qqreadtimeurlVal = cookiesArr[index].qqreadtimeurlVal;
-//  qqreadtimeheaderVal = cookiesArr[index].qqreadtimeheaderVal;	
-// $.index = index + 1
-	
-//}
+
+for (let index = 0; index < headers.length; index++) {
+ const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
+ json_temp.qqreadheaderVal = headers[index];
+json_temp.qqreadtimeurlVal = timeurls[index];
+json_temp.qqreadtimeheaderVal = timeheaders[index];
+cookiesArr.push(json_temp);
+qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
+qqreadtimeurlVal = cookiesArr[index].qqreadtimeurlVal;
+ qqreadtimeheaderVal = cookiesArr[index].qqreadtimeheaderVal;	
+$.index = index + 1
+	console.log(index)
+}
 
 var tz = "";
 

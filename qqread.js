@@ -66,9 +66,9 @@ for (let i = 0; i< headers.length; index++) {
 json_temp.qqreadtimeurlVal = timeurls[i];
 json_temp.qqreadtimeheaderVal = timeheaders[i];
 cookiesArr.push(json_temp);
-qqreadheaderVal = cookiesArr[0].qqreadheaderVal;
-qqreadtimeurlVal = cookiesArr[0].qqreadtimeurlVal;
-qqreadtimeheaderVal = cookiesArr[0].qqreadtimeheaderVal;	
+qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
+qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
+qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;	
 
 $.index = i + 1;
 console.log(`-------------------------\n\n开始企鹅阅读第${$.index}个账号`)

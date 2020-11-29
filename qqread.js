@@ -59,15 +59,12 @@ if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') 
 
 
 !(async () => {
-
 for (let i = 0; i< headers.length; i++) {
  const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
  json_temp.qqreadheaderVal = headers[i];
 json_temp.qqreadtimeurlVal = timeurls[i];
 json_temp.qqreadtimeheaderVal = timeheaders[i];
 cookiesArr.push(json_temp);
-
-
 qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
 qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
 qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;	
@@ -77,7 +74,7 @@ console.log(`-------------------------\n\n开始企鹅阅读第${$.index}个账�
 	
 await all();	
  console.log(`-------------------------\n\n企鹅阅读共完成${$.index}个账号，阅读请求全部结束`)	
-}
+})()
 
 
 

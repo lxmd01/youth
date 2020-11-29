@@ -55,11 +55,11 @@ if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') 
   };
 
 for (let index = 0; index < headers.length; index++) {
-  const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
-  json_temp.qqreadheaderVal = headers[index];
-  json_temp.qqreadtimeurlVal = timeurls[index];
-  json_temp.qqreadtimeheaderVal = timeheaders[index];
-  cookiesArr.push(json_temp);
+  const myObj = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
+  myObj.qqreadheaderVal = headers[index];
+  myObj.qqreadtimeurlVal = timeurls[index];
+  myObj.qqreadtimeheaderVal = timeheaders[index];
+  cookiesArr.push(myObj);
 }
 
 

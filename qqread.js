@@ -38,9 +38,9 @@ Youthy= process.env.QQREAD_TIMEBODY;
 Youdy= process.env.QQREAD_TIMEHEADER;
 
 
-qqreadheaderVal.push(YouthBody)
-qqreadtimeurlVal.push(Youthy)       
-qqreadtimeheaderVal.push(Youdy)
+qqreadheaderVal=String(YouthBody)
+qqreadtimeurlVal=String(Youthy)       
+qqreadtimeheaderVal=String(Youdy)
 
 var tz=''
 

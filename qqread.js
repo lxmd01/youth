@@ -36,6 +36,7 @@ const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'
 let qqreadheaderVal,qqreadtimeurlVal,qqreadtimeheaderVal;
 
 const cookiesArr = [];
+var tz=''
 
 // catch value from Action Secret.
 let headers = [], timeurls = [], timeheaders = [];
@@ -70,9 +71,9 @@ qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
   qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;	
   $.index = i+ 1;
       console.log(`-------------------------\n\n企鹅阅读第${$.index}次阅读`)	
-	var tz=''
+	
 
-	all()
+	 await all();
 }
 
 

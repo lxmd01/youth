@@ -72,12 +72,12 @@ for (let index = 0; index < headers.length; index++) {
 
 
 
-
+var tz=''
 let num = 0
 all()
 
 function all(){
-var tz=''	
+	
 qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
 qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
 qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
@@ -715,7 +715,7 @@ notify.sendNotify(jsname,tz,'')//宝箱领取成功通知
 else if (notifyInterval==3&&box.data.count==0||box.data.count==18||box.data.count==36||box.data.count==54||box.data.count==72)
 notify.sendNotify(jsname,tz,'')//宝箱每18次通知一次
 
-
+tz=''
 
 }
 

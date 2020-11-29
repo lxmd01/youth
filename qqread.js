@@ -68,13 +68,13 @@ cookiesArr.push(json_temp);
 qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
 qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
 qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;
-console.log(`-------------------------\n\n开始企鹅阅读第${$.index}个账号`)	
-$.index = i + 1;
+console.log(`-------------------------\n\n开始企鹅阅读第${$.i}个账号`)
+$.i = i + 1;
 
 }
 	
 await all();	
- console.log(`-------------------------\n\n企鹅阅读共完成${$.index}个账号，阅读请求全部结束`)	
+ console.log(`-------------------------\n\n企鹅阅读共完成${$.i}个账号，阅读请求全部结束`)	
 })()
 
 

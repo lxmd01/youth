@@ -70,8 +70,8 @@ function all(){
 qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
  qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
  qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
-	$.num = num+ 1;
-console.log(`-------------------------\n\n开始企鹅阅读第${$.num}个账号阅读`)
+$.num = num+ 1;
+console.log(`-------------------------\n\n开始企鹅阅读第${$.num}个账号阅读`) 
 for(var i=0;i<18;i++){ 
 (function(i) {
   setTimeout(
@@ -111,8 +111,7 @@ else if (i==15) qqreadpick();//领周时长奖励
 else if (i==16) showmsg();//通知
 	   
       else if (i == 17 && num < cookiesArr.length - 1) {
-	   num += 1
-	      
+	       num += 1    
             all();
           } else if (i == 17 && num == cookiesArr.length - 1) {
             $.done();

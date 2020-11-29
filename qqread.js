@@ -69,7 +69,7 @@ cookiesArr.push(json_temp);
 qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
 qqreadtimeurlVal = cookiesArr[index].qqreadtimeurlVal;
 qqreadtimeheaderVal = cookiesArr[index].qqreadtimeheaderVal;	
-all();
+await all();
 $.index = index + 1	
 }
 })()

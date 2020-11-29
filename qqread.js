@@ -114,7 +114,9 @@ else if (i==16) showmsg();//通知
 	       num += 1    
             all();
           } else if (i == 17 && num == cookiesArr.length - 1) {
+		  
             $.done();
+		console.log(`-------------------------\n\n企鹅阅读共完成${$.num}个账号阅读，阅读请求全部结束`)  
           }
         },
 

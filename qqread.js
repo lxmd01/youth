@@ -37,6 +37,8 @@ const cookiesArr = [];
 // catch value from Action Secret.
 let headers = [], timeurls = [], timeheaders = [],headersarr = [],timeurlsArr = [],timeheadersArr = [];
 
+var tz = "";
+
 if (process.env.QQREAD_HEADER && process.env.QQREAD_HEADER.indexOf('#') > -1) {
   headers = process.env.QQREAD_HEADER.split('#');
 } else {
@@ -60,22 +62,38 @@ for (let index = 0; index < headers.length; index++) {
   json_temp.qqreadtimeurlVal = timeurls[index];
   json_temp.qqreadtimeheaderVal = timeheaders[index];
   cookiesArr.push(json_temp);
+
+ !(async () => {
+  if (! headers[0]) {
+    $.msg($.name, '【提示】请先获取中青看点一cookie')
+    return;
+  }
+  for (let i = 0; i < headers.length; i++) {
+    if (headers[i]) {
+      qqreadheaderVal = headers[i];
+      qqreadtimeurlVal = timeurls[i];
+      qqreadtimeheaderVal = timeheaders[i];
+     
+      $.index = i + 1;
+      console.log(`-------------------------\n\n开始【中青看点${$.index}】`)
+    }
+await all()
 }
 
 
 
 
 
-var tz = "";
-let num = 0;
-all();
+//var tz = "";
+//let num = 0;
+//all();
 
 function all(){
-qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
-qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
- qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
-$.num = num+ 1;
-console.log(`-------------------------\n\n开始企鹅阅读第${$.num}个账号阅读`) 
+//qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
+//qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
+ //qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
+//$.num = num+ 1;
+//console.log(`-------------------------\n\n开始企鹅阅读第${$.num}个账号阅读`) 
 for(var i=0;i<18;i++){ 
 (function(i) {
   setTimeout(
@@ -114,11 +132,11 @@ else if (i==15) qqreadpick();//领周时长奖励
 	   
 else if (i==16) showmsg();//通知
 	   
-   else if (i == 17 && num < cookiesArr.length - 1) {
-	     num += 1    
-           all();
+   //else if (i == 17 && num < cookiesArr.length - 1) {
+	     //num += 1    
+         //  all(); & num == cookiesArr.length - 1
          } 
-	   else if (i == 17&& num == cookiesArr.length - 1 ) {
+	   else if (i == 17){
 		  
             $.done();
 		console.log(`-------------------------\n\n企鹅阅读共完成${$.num}个账号阅读，阅读请求全部结束`)  

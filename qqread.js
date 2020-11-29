@@ -37,7 +37,7 @@ const qqreadtimeheaderVall=process.env.QQREAD_TIMEHEADER
 const qqreadheaderVal=JSON.stringify(qqreadheaderVall)
 const qqreadtimeheaderVal=JSON.stringify(qqreadtimeheaderVall)
 var tz=''
-
+all()
 
 function all()
 

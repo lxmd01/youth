@@ -66,16 +66,13 @@ for (let index = 0; index < headers.length; index++) {
   json_temp.qqreadtimeurlVal = timeurls[index];
   json_temp.qqreadtimeheaderVal = timeheaders[index];
   cookiesArr.push(json_temp);
-
-for (let i = 0; i < cookiesArr.length; i++){	
-	 if (cookiesArr[i]) {
-qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
-  qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
-  qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;
-$.i=i+1	
+qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
+  qqreadtimeurlVal = cookiesArr[index].qqreadtimeurlVal;
+  qqreadtimeheaderVal = cookiesArr[index].qqreadtimeheaderVal;
+  $.index = index + 1;
 console.log(`-------------------------\n\n开始企鹅阅读第${$.i}个账号`)	
-	 }
-}
+	
+
 	
 await all();
 await showmsg();	

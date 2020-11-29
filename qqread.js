@@ -57,49 +57,24 @@ if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') 
 	  console.log(`您选择的是用"#"隔开\n`)
 } else {
   timeheaders = process.env.QQREAD_TIMEHEADER.split();
-
-   
-  };
+ };
 
 for (let index = 0; index < headers.length; index++) {
-  const myObj = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
-  myObj.qqreadheaderVal = headers[index];
-  myObj.qqreadtimeurlVal = timeurls[index];
-  myObj.qqreadtimeheaderVal = timeheaders[index];
-	
-		  Object.keys(myObj).forEach((item) => {
-        if (myObj[item]) {
-           cookiesArr.push(myObj)
-	
- 
+  const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
+  json_temp.qqreadheaderVal = headers[index];
+  json_temp.qqreadtimeurlVal = timeurls[index];
+  json_temp.qqreadtimeheaderVal = timeheaders[index];
+  cookiesArr.push(json_temp);
 }
 
- !(async () => {
-  if (!cookiesArr[0]) {
-    $.msg($.name, '【提示】请先获取中青看点一cookie')
-    return;
-  }
-  for (let i = 0; i < cookiesArr.length; i++) {
-    if (cookiesArr[i]) {
-qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
-qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
-qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheadeVal;
-      $.index = i + 1;
-      console.log(`-------------------------\n\n开始【中青看点${$.index}】`)
-    }
-
-
-
-
-
-
-
 var tz=''
-
+let num = 0;
 all()
 
 function all(){
-	
+	qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
+  qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
+  qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
 
 for(var i=0;i<18;i++)
  { (function(i) {

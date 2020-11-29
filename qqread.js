@@ -31,47 +31,36 @@ const wktimess=1200//周奖励领取标准，默认1200分钟
 
 const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'
 const qqreadtimeurlVal = 'https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=1132&refer=-1&bid=130833&readTime=2190&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A2190%2C%22pay_status%22%3A4%7D%7D%5D&sp=-1'
-let cookiesArr = [], qqreadheaderVal,
-    readArr = [], qqreadtimeheaderVal;
-let CookieYouth = [] ,ARTBODYs = [], 
-    REDBODYs  = [], READTIME = [];
-if ($.isNode()) {
-  if (process.env.QQREAD_HEADER && process.env.QQREAD_HEADER.indexOf('#') > -1) {
-  CookieYouth = process.env.QQREAD_HEADER.split('#');
-  } else {
-      CookieYouth = process.env.QQREAD_HEADER.split()
-  };
-  
-  if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('&') > -1) {
-  READTIME = process.env.QQREAD_TIMEHEADER.split('&');
-  }else {
-      READTIME = process.env.QQREAD_TIMEHEADER.split()
-  };
-}    
-if ($.isNode()) {
-    Object.keys(CookieYouth).forEach((item) => {
-        if (CookieYouth[item]) {
-          cookiesArr.push(CookieYouth[item])
-        }
-      })
-    Object.keys(READTIME).forEach((item) => {
-        if (READTIME[item]) {
-          timeArr.push(READTIME[item])
-        }
-      })
+let qqreadheaderVal,qqreadtimeheaderVal;
+const cookiesArr = [];
+// catch value from Action Secret.
+let headers = [], timeurls = [], timeheaders = [];
 
- !(async () => {
-  if (!cookiesArr[0]) {
-    $.msg($.name, '【提示】请先获取中青看点一cookie')
-    return;
-  }
-  for (let i = 0; i < cookiesArr.length; i++) {
-    if (cookiesArr[i]) {
-      qqreadheaderVal = JSON.stringify(cookiesArr[i]);
-      QQREAD_TIMEHEADER = JSON.stringify(timeArr[i]);
-      $.index = i + 1;
-      console.log(`-------------------------\n\n开始【中青看点${$.index}】`)
-    }
+if (process.env.QQREAD_HEADER && process.env.QQREAD_HEADER.indexOf('#') > -1) {
+  headers = process.env.QQREAD_HEADER.split('#');
+} else {
+  headers = process.env.QQREAD_HEADER.split();
+  };
+//if (process.env.QQREAD_TIMEURL && process.env.QQREAD_TIMEURL.indexOf('\n') > -1) {
+ // timeurls = process.env.QQREAD_TIMEURL.split('\n');
+//} else {
+ // timeurls = process.env.QQREAD_TIMEURL.split();
+ // };
+if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') > -1) {
+  timeheaders = process.env.QQREAD_TIMEHEADER.split('#');
+} else {
+  timeheaders = process.env.QQREAD_TIMEHEADER.split();
+  };
+
+for (let index = 0; index < headers.length; index++) {
+  const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
+  json_temp.qqreadheaderVal = headers[index];
+  //json_temp.qqreadtimeurlVal = timeurls[index];
+  json_temp.qqreadtimeheaderVal = timeheaders[index];
+  cookiesArr.push(json_temp);
+}
+
+
 
 
 
@@ -80,10 +69,13 @@ if ($.isNode()) {
 
 
 var tz=''
+let num = 0
 all()
 
 function all()
-
+qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
+ // qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
+  qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
  {
 
    for(var i=0;i<18;i++)

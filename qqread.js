@@ -65,12 +65,12 @@ for (let i = 0; i< headers.length; i++) {
 json_temp.qqreadtimeurlVal = timeurls[i];
 json_temp.qqreadtimeheaderVal = timeheaders[i];
 cookiesArr.push(json_temp);
-qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
-qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
-qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;
-console.log(`-------------------------\n\n开始企鹅阅读第${$.i}个账号`)
-$.i = i + 1;
+qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
+qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
+qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
 
+$.i = i + 1;
+console.log(`-------------------------\n\n开始企鹅阅读第${$.i}个账号`)
 }
 	
 await all();	

@@ -61,9 +61,9 @@ if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') 
 
 for (let i = 0; i < headers.length; i++) {
   const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
-  json_temp.qqreadheaderVal = headers[index];
-  json_temp.qqreadtimeurlVal = timeurls[index];
-  json_temp.qqreadtimeheaderVal = timeheaders[index];
+  json_temp.qqreadheaderVal = headers[i];
+  json_temp.qqreadtimeurlVal = timeurls[i];
+  json_temp.qqreadtimeheaderVal = timeheaders[i];
   cookiesArr.push(json_temp);
   $.index = i+ 1;
       console.log(`-------------------------\n\n开始中青看点第${$.index}次阅读`)	

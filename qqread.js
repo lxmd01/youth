@@ -66,17 +66,21 @@ for (let index = 0; index < headers.length; index++) {
   json_temp.qqreadtimeurlVal = timeurls[index];
   json_temp.qqreadtimeheaderVal = timeheaders[index];
   cookiesArr.push(json_temp);
-qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
-  qqreadtimeurlVal = cookiesArr[index].qqreadtimeurlVal;
-  qqreadtimeheaderVal = cookiesArr[index].qqreadtimeheaderVal;
-$.index=index+1	
-console.log(`-------------------------\n\n开始企鹅阅读第${$.index}个账号`)	
-
+}
+for (let i = 0; i < cookiesArr.length; i++){	
+	 if (cookiesArr[i]) {
+qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
+  qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
+  qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;
+$.i=i+1	
+console.log(`-------------------------\n\n开始企鹅阅读第${$.i}个账号`)	
+	 }
+}
 	
 await all();
 await showmsg();	
  }
-  console.log(`-------------------------\n\n中青看点共完成${$.index}次阅读，阅读请求全部结束`)
+  console.log(`-------------------------\n\n中青看点共完成${$.i}次阅读，阅读请求全部结束`)
 })()
 
 

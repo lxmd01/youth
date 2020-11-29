@@ -703,7 +703,7 @@ function showmsg() {
 
 	
 console.log(tz)
-tz=''
+
 if (notifyInterval==1)
 notify.sendNotify(jsname,tz,'')//显示所有通知
 

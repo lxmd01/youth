@@ -70,9 +70,9 @@ for (let index = 0; index < headers.length; index++) {
   }
   for (let i = 0; i < headers.length; i++) {
     if (headers[i]) {
-      qqreadheaderVal = headers[i];
-      qqreadtimeurlVal = timeurls[i];
-      qqreadtimeheaderVal = timeheaders[i];
+      qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
+      qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
+      qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;
      
       $.index = i + 1;
       console.log(`-------------------------\n\n开始【中青看点${$.index}】`)

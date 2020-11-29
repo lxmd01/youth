@@ -68,7 +68,7 @@ for (let i = 0; i < headers.length; i++) {
   $.index = i+ 1;
       console.log(`-------------------------\n\n企鹅阅读第${$.index}次阅读`)	
 	var tz=''
-let num = 0;
+
 	all()
 }
 
@@ -76,9 +76,9 @@ let num = 0;
 
 
 function all(){
-	qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
-  qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
-  qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
+	qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
+  qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
+  qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;
 
 for(var i=0;i<18;i++)
  { (function(i) {

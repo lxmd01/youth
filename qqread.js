@@ -31,8 +31,9 @@ const wktimess=1200//周奖励领取标准，默认1200分钟
 
 const qqreadurlVal = 'https://mqqapi.reader.qq.com/mqq/user/init'
 const qqreadtimeurlVal = 'https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=1132&refer=-1&bid=130833&readTime=2190&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A2190%2C%22pay_status%22%3A4%7D%7D%5D&sp=-1'
-let qqreadheaderVal,qqreadtimeheaderVal;
+let qqreadheaderVal, qqreadtimeurlVal, qqreadtimeheaderVal;
 const cookiesArr = [];
+
 // catch value from Action Secret.
 let headers = [], timeurls = [], timeheaders = [];
 
@@ -72,13 +73,11 @@ var tz=''
 let num = 0
 all()
 
-function all()
+function all(){
 qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
- // qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
-  qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
- {
-
-   for(var i=0;i<18;i++)
+// qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
+qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
+for(var i=0;i<18;i++)
  { (function(i) {
             setTimeout(function() {
 

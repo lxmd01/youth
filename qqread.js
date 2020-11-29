@@ -71,9 +71,8 @@ qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
   qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;	
   $.index = i+ 1;
       console.log(`-------------------------\n\n企鹅阅读第${$.index}次阅读`)	
-	
-
-	 await all();
+ 
+	all()
 }
 
 

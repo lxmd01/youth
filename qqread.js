@@ -66,8 +66,7 @@ for (let index = 0; index < headers.length; index++) {
   json_temp.qqreadtimeurlVal = timeurls[index];
   json_temp.qqreadtimeheaderVal = timeheaders[index];
   cookiesArr.push(json_temp);
-	
-	qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
+qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
   qqreadtimeurlVal = cookiesArr[index].qqreadtimeurlVal;
   qqreadtimeheaderVal = cookiesArr[index].qqreadtimeheaderVal;
 $.index=index+1	
@@ -75,11 +74,11 @@ console.log(`-------------------------\n\n开始企鹅阅读第${$.index}个账�
 
 var tz = "";	
 await all();
+await showmsg();	
  }
   console.log(`-------------------------\n\n中青看点共完成${$.index}次阅读，阅读请求全部结束`)
 })()
- .catch((e) => $.logErr(e))
- .finally(() => $.done())
+
 
 function all(){
 		
@@ -136,8 +135,8 @@ qqreadwktime();//周时长查询
 else if (i==15)
 qqreadpick();//领周时长奖励
 
-else if (i==16)
-showmsg();//通知
+//else if (i==16)
+//showmsg();//通知
 
 else if (i==17)
 $.done();//结束

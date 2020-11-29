@@ -42,18 +42,23 @@ let headers = [], timeurls = [], timeheaders = [];
 
 if (process.env.QQREAD_HEADER && process.env.QQREAD_HEADER.indexOf('#') > -1) {
   headers = process.env.QQREAD_HEADER.split('#');
+ console.log(`您选择的是用"#"隔开\n`)	
 } else {
   headers = process.env.QQREAD_HEADER.split();
   };
 if (process.env.QQREAD_TIMEURL && process.env.QQREAD_TIMEURL.indexOf('\n') > -1) {
 timeurls = process.env.QQREAD_TIMEURL.split('\n');
+	  console.log(`您选择的是用换行隔开\n`)
 } else {
  timeurls = process.env.QQREAD_TIMEURL.split();
 };
 if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') > -1) {
   timeheaders = process.env.QQREAD_TIMEHEADER.split('#');
+	  console.log(`您选择的是用"#"隔开\n`)
 } else {
   timeheaders = process.env.QQREAD_TIMEHEADER.split();
+
+   
   };
 
 for (let index = 0; index < headers.length; index++) {
@@ -61,7 +66,12 @@ for (let index = 0; index < headers.length; index++) {
   myObj.qqreadheaderVal = headers[index];
   myObj.qqreadtimeurlVal = timeurls[index];
   myObj.qqreadtimeheaderVal = timeheaders[index];
-  cookiesArr.push(myObj);
+	
+		  Object.keys(myObj).forEach((item) => {
+        if (myObj[item]) {
+           cookiesArr.push(myObj)
+	
+ 
 }
 
  !(async () => {

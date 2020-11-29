@@ -67,9 +67,10 @@ json_temp.qqreadtimeheaderVal = timeheaders[i];
 cookiesArr.push(json_temp);
 qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
 qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
-qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;	
+qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;
+console.log(`-------------------------\n\n开始企鹅阅读第${$.index}个账号`)	
 $.index = i + 1;
-console.log(`-------------------------\n\n开始企鹅阅读第${$.index}个账号`)
+
 }
 	
 await all();	

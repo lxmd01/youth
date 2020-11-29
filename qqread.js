@@ -13,7 +13,7 @@
 11.27 调整通知为，成功开启宝箱再通知
 
 */
-
+var tz = "";
 const jsname='企鹅读书'
 const $ = Env(jsname)
 const notify = $.isNode() ? require('./sendNotify') : '';
@@ -69,13 +69,14 @@ cookiesArr.push(json_temp);
 qqreadheaderVal = cookiesArr[index].qqreadheaderVal;
 qqreadtimeurlVal = cookiesArr[index].qqreadtimeurlVal;
  qqreadtimeheaderVal = cookiesArr[index].qqreadtimeheaderVal;	
+	all();
 $.index = index + 1
-	console.log(index)
+	
 }
 
-var tz = "";
 
-all();
+
+
 
 function all(){
 	

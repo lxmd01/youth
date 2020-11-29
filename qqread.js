@@ -42,7 +42,7 @@ if ($.isNode()) {
   };
   
   if (process.env.QQREAD_TIMEBODY && process.env.QQREAD_TIMEBODY.indexOf('&') > -1) {
- Youthy = process.env.QQREAD_TIMEBODY('&');
+	  Youthy = process.env.QQREAD_TIMEBODY('&');
   } else {
       Youthy= process.env.QQREAD_TIMEBODY.split()
   };

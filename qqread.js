@@ -32,7 +32,7 @@ const maxtime=20//每日上传时长限制，默认20小时
 const wktimess=1200//周奖励领取标准，默认1200分钟
 
 const qqreadurlVal = "https://mqqapi.reader.qq.com/mqq/user/init";
-let qqreadheaderVal,ReadArr = [], qqreadtimeurlVal, qqreadtimeheaderVal;
+let qqreadheaderVal, qqreadtimeurlVal, qqreadtimeheaderVal;
 const cookiesArr = [];
 // catch value from Action Secret.
 let headers = [], timeurls = [], timeheaders = [];
@@ -66,16 +66,14 @@ var tz = "";
 let num = 0;
 all();
 
-function all(){
-qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
+
+
+function all() {
+ qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
 qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
  qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
 $.num = num+ 1;
 console.log(`-------------------------\n\n开始企鹅阅读第${$.num}个账号阅读`) 
-function all() {
-  qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
-  qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
-  qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
   for (var i = 0; i < 18; i++) {
     (function (i) {
       setTimeout(

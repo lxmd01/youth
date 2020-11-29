@@ -65,6 +65,9 @@ for (let i = 0; i < headers.length; i++) {
   json_temp.qqreadtimeurlVal = timeurls[i];
   json_temp.qqreadtimeheaderVal = timeheaders[i];
   cookiesArr.push(json_temp);
+qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
+  qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
+  qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;	
   $.index = i+ 1;
       console.log(`-------------------------\n\n企鹅阅读第${$.index}次阅读`)	
 	var tz=''
@@ -76,9 +79,7 @@ for (let i = 0; i < headers.length; i++) {
 
 
 function all(){
-	qqreadheaderVal = cookiesArr[i].qqreadheaderVal;
-  qqreadtimeurlVal = cookiesArr[i].qqreadtimeurlVal;
-  qqreadtimeheaderVal = cookiesArr[i].qqreadtimeheaderVal;
+	
 
 for(var i=0;i<18;i++)
  { (function(i) {

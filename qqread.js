@@ -34,7 +34,7 @@ const qqreadtimeurlVal = 'https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?sc
 
 var qqreadheaderVall= process.env.QQREAD_HEADER
 var qqreadtimeheaderVall=process.env.QQREAD_TIMEHEADER
-var qqreadheaderVal=JSON.stringify(qqreadtimeheaderVal)
+var qqreadheaderVal=JSON.stringify(qqreadheaderVall)
 var qqreadtimeheaderVal=JSON.stringify(qqreadtimeheaderVall)
 var tz=''
 

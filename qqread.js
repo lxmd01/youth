@@ -72,11 +72,12 @@ for (let index = 0; index < headers.length; index++) {
 
 
 
-var tz=''
+
 let num = 0
 all()
 
 function all(){
+var tz=''	
 qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
 qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
 qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;

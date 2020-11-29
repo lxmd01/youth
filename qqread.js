@@ -63,14 +63,13 @@ for (let index = 0; index < headers.length; index++) {
 }
 
 var tz = "";
-
+let num = 0;
 all();
 
 function all(){
-	let num = 0;
 qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
-  qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
-  qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
+ qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
+ qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
 	$.num = num+ 1;
 console.log(`-------------------------\n\n开始企鹅阅读第${$.num}个账号阅读`)
 for(var i=0;i<18;i++){ 

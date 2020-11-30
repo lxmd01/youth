@@ -180,7 +180,7 @@ else if ($.time('HH')>4&&$.time('HH')<8){
   if ($.isNode()&&rotaryres.code !== '10010')
     if( rotarytimes && rotarytimes%50 == 0 && cash >= 10){
        await notify.sendNotify($.name + " " + nick, "您的余额约为"+cash+"元，已可以提现"+'\n'+`【收益总计】${signinfo.data.user.score}青豆  现金约${cash}元\n${detail}`)
-     console.log(`============ 脚本执行完毕时间-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
+ 
     }
  }
 })()

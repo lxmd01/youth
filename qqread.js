@@ -19,7 +19,7 @@ const $ = Env(jsname)
 const notify = $.isNode() ? require('./sendNotify') : '';
 
 const logs = 0;   //0为关闭日志，1为开启
-const notifyInterval=3
+const notifyInterval=2
 //0为关闭通知，1为所有通知，2为宝箱领取成功通知，3为宝箱每18次通知一次
 
 const dd=1//单次任务延迟,默认1秒
@@ -680,16 +680,19 @@ function showmsg() {
 
 	
 console.log(tz)
-
-if (notifyInterval==1)
+let d = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);
+let goal=task.data.user.amount
+if (notifyInterval==1&&d.getHours()>=9 && d.getHours()<=22)
 notify.sendNotify(jsname,tz,'')//显示所有通知
 
-else if (notifyInterval==2&&task.data.treasureBox.doneFlag==0)
+else if (notifyInterval==2&&gold >= 10000&&task.data.treasureBox.doneFlag==0&&d.getHours()>=9 && d.getHours()<=22)
 notify.sendNotify(jsname,tz,'')//宝箱领取成功通知
 
-else if (notifyInterval==3&&task.data.treasureBox.count==0||task.data.treasureBox.count==15||task.data.treasureBox.count==30||task.data.treasureBox.count==45||task.data.treasureBox.count==60)
+else if (notifyInterval==3&&d.getHours()>=9 && d.getHours()<=22&&task.data.treasureBox.count==0||task.data.treasureBox.count==15||task.data.treasureBox.count==30||task.data.treasureBox.count==45||task.data.treasureBox.count==60)
 notify.sendNotify(jsname,tz,'')//宝箱每18次通知一次
 
+	
+	
 tz=''
 
 }

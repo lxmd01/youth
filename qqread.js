@@ -681,7 +681,7 @@ function showmsg() {
 	
 console.log(tz)
 let d = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);
-int gold=Number(task.data.user.amount)
+let gold=Number(task.data.user.amount)
 
 if (notifyInterval==1&&gold >= 50000 && d.getHours()>=9 && d.getHours()<=20&&task.data.treasureBox.doneFlag==0)
 notify.sendNotify(jsname,tz,'')//显示所有通知

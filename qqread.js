@@ -681,15 +681,15 @@ function showmsg() {
 	
 console.log(tz)
 let d = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);
-var gold=task.data.user.amount
+int gold=Number(task.data.user.amount)
 
 if (notifyInterval==1&&gold >= 50000 && d.getHours()>=9 && d.getHours()<=20&&task.data.treasureBox.doneFlag==0)
 notify.sendNotify(jsname,tz,'')//显示所有通知
 
-else if (notifyInterval==2 && gold >= 50000 && d.getHours()>=9 && d.getHours()<=20&&task.data.treasureBox.doneFlag==0)
+else if (notifyInterval==2&&gold >= 50000&&d.getHours()>=9&&d.getHours()<=20&&task.data.treasureBox.doneFlag==0)
 notify.sendNotify(jsname,tz,'')//宝箱领取成功通知
 
-else if (notifyInterval==3 && gold >= 50000&&d.getHours()>=9 && d.getHours()<=20&&task.data.treasureBox.doneFlag==0&&task.data.treasureBox.count==0||task.data.treasureBox.count==15||task.data.treasureBox.count==30||task.data.treasureBox.count==45||task.data.treasureBox.count==60)
+else if (notifyInterval==3&&gold >= 50000&&d.getHours()>=9&&d.getHours()<=20&&task.data.treasureBox.doneFlag==0&&task.data.treasureBox.count==0||task.data.treasureBox.count==15||task.data.treasureBox.count==30||task.data.treasureBox.count==45||task.data.treasureBox.count==60)
 notify.sendNotify(jsname,tz,'')//宝箱每15次通知一次
 
 	

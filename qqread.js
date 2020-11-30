@@ -64,7 +64,7 @@ console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date
 
 var tz = "";
 let num = 0;
-//all();
+all();
 
 
 

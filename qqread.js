@@ -17,8 +17,7 @@
 const jsname='企鹅读书'
 const $ = Env(jsname)
 const notify = $.isNode() ? require('./sendNotify') : '';
-console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
-console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
+
 const logs = 0;   //0为关闭日志，1为开启
 const notifyInterval=3
 //0为关闭通知，1为所有通知，2为宝箱领取成功通知，3为宝箱每18次通知一次
@@ -60,7 +59,8 @@ for (let index = 0; index < headers.length; index++) {
   json_temp.qqreadtimeheaderVal = timeheaders[index];
   cookiesArr.push(json_temp);
 }
-
+console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
+console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
 
 var tz = "";
 let num = 0;
@@ -118,13 +118,13 @@ console.log(`-------------------------\n\n开始企鹅阅读第${$.num}个账号
             num += 1;
             all();
 	   } else if (i == 17 && num == cookiesArr.length - 1) {
-		  
-            $.done();
-		console.log(`-------------------------\n\n企鹅阅读共完成${$.num}个账号阅读，阅读请求全部结束`)  
-          }
+		console.log(`-------------------------\n\n企鹅阅读共完成${$.num}个账号阅读，阅读请求全部结束`)
+		   console.log(`============ 脚本执行完毕时间-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
+		    $.done();
+          }  	
         },
 
-        (i + 1) * dd * 1200
+        (i + 1) * dd * 1000
       );
     })(i);
   }

@@ -681,7 +681,7 @@ function showmsg() {
 	
 console.log(tz)
 let d = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);
-let goal=task.data.user.amount
+let gold=task.data.user.amount
 if (notifyInterval==1&&d.getHours()>=9 && d.getHours()<=22)
 notify.sendNotify(jsname,tz,'')//显示所有通知
 

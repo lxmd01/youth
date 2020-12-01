@@ -696,7 +696,7 @@ else if (notifyInterval==2&&gold >= 50000&&d.getHours()>=9&&d.getHours()<=20&&ta
 	//notify.sendNotify(jsname,tz,'');//宝箱每15次通知一次
 	//console.log('宝箱每15次通知一次')
 //}
-else if (d.getHours()==19&&d.getMinutes()>=40){
+else if (d.getHours()==19&&d.getMinutes()>40){
 
 
 	notify.sendNotify(jsname,tz,'')//每天19点40分通知一次	

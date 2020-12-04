@@ -123,10 +123,10 @@ qqreadsign2();//签到翻倍
 else if (i==11&&task.data.treasureBox.videoDoneFlag==0)
 qqreadbox2();//宝箱翻倍
 
-else if (i==12&&task.data.taskList[1].doneFlag==0)
+else if (i==12&&task.data.taskList[1].doneFlag==0){
 qqreadssr3();//阅读金币3
 showmsg();//通知	 
-else if (i == 13 && num < cookiesArr.length - 1){
+}else if (i == 13 && num < cookiesArr.length - 1){
           num += 1;
             all();
  } else if (i == 13 && num== cookiesArr.length - 1) {

@@ -35,7 +35,7 @@ const dd=1//单次任务延迟,默认1秒
 
 const TIME=30//单次时长上传限制，默认5分钟
 
-const maxtime=20//每日上传时长限制，默认20小时
+const maxtime=12//每日上传时长限制，默认20小时
 
 const wktimess=1200//周奖励领取标准，默认1200分钟
 

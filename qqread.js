@@ -295,33 +295,24 @@ resolve()
 
 
 
+
 //阅读时长
 function qqreadtime() {
 return new Promise((resolve, reject) => {
-
   const toqqreadtimeurl = {
-
     url: qqreadtimeurlVal.replace(/readTime=/g, `readTime=${TIME}`),
-
-    headers: JSON.parse(qqreadtimeheaderVal),
-     
-    };
-
-if (config.data.pageParams.todayReadSeconds/3600<=maxtime){
-
+    headers: JSON.parse(qqreadtimeheaderVal),   
+    };	
    $.get(toqqreadtimeurl,(error, response, data) =>{
      if(logs) $.log(`${jsname}, 阅读时长: ${data}`)
      time =JSON.parse(data)
      if (time.code==0)
 tz+='【阅读时长】:上传'+TIME/6+'分钟\n'
 
-
-
 resolve()
     })
-
-}
    })
+  }  
   }  
 
 

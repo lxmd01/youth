@@ -1,9 +1,8 @@
 
-/*ziye
 
+/*ziye
 本人github地址     https://github.com/ziye12/JavaScript 
 转载请备注个名字，谢谢
-
 11.25 增加 阅读时长上传，阅读金币，阅读随机金币
 11.25 修复翻倍宝箱不同时领取的问题.增加阅读金币判定
 11.25 修复阅读时长问题，阅读金币问题，请重新获取时长cookie
@@ -11,13 +10,23 @@
 11.26 增加领取周时长奖励
 11.26 增加结束命令
 11.27 调整通知为，成功开启宝箱再通知
+11.28 修复错误
+11.29 更新 支持action.默认每天21点到21点20通知
+12.2 修复打卡问题
+12.3 缩短运行时间，由于企鹅读书版本更新.请手动进去看一次书
+12.3 调整推送时间为12点和24点左右
 
 */
 
 const jsname='企鹅读书'
 const $ = Env(jsname)
+console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
+console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
 const notify = $.isNode() ? require('./sendNotify') : '';
-
+var tz='';
+var kz='';
+var task='';
+var config='';
 const logs = 0;   //0为关闭日志，1为开启
 const notifyInterval=2
 //0为关闭通知，1为所有通知，2为宝箱领取成功通知，3为宝箱每15次通知一次
@@ -59,14 +68,9 @@ for (let index = 0; index < headers.length; index++) {
   json_temp.qqreadtimeheaderVal = timeheaders[index];
   cookiesArr.push(json_temp);
 }
-console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
-console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
 
-var tz = "";
 let num = 0;
 all();
-
-
 
 function all() {
  qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
@@ -74,62 +78,72 @@ qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
  qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
 $.num = num+ 1;
 console.log(`-------------------------\n\n开始企鹅阅读第${$.num}个账号阅读`) 
-  for (var i = 0; i < 18; i++) {
-    (function (i) {
-      setTimeout(
-        function () {
-          if (i == 0) qqreadinfo();
-          //用户名
-          else if (i == 1) qqreadconfig();
-          //时长查询
-          else if (i == 2) qqreadtask();
-          //任务列表
-          else if (i == 3) qqreadsign();
-          //金币签到
-          else if (i == 4 && task.data.treasureBox.doneFlag == 0) qqreadbox();
-          //宝箱
-          else if (i == 5 && task.data.taskList[2].doneFlag == 0) qqreadssr1();
-          //阅读金币1
-          else if (i == 6) qqreadtime();
-          //上传时长
-          else if (i == 7 && task.data.taskList[0].doneFlag == 0) qqreadtake();
-          //阅豆签到
-          else if (i == 8 && task.data.taskList[1].doneFlag == 0)
-            qqreaddayread();
-          //阅读任务
-          else if (i == 9 && task.data.taskList[2].doneFlag == 0) qqreadssr2();
-          //阅读金币2
-          else if (i == 10 && task.data.taskList[3].doneFlag == 0)
-            qqreadvideo();
-          //视频任务
-          else if (i == 11 && task.data.taskList[0].doneFlag==0) qqreadsign2();
-          //签到翻倍
-          else if (i == 12 && task.data.treasureBox.videoDoneFlag == 0)
-            qqreadbox2();
-          //宝箱翻倍
-          else if (i == 13 && task.data.taskList[2].doneFlag == 0) qqreadssr3();
-          //阅读金币3
-          else if (i == 14) qqreadwktime();
-          //周时长查询
-          else if (i == 15) qqreadpick();
-          //领周时长奖励
-          else if (i == 16) showmsg();
-          else if (i == 17 && num < cookiesArr.length - 1) {
-            num += 1;
+   for(var i=0;i<14;i++)
+ { (function(i) {
+            setTimeout(function() {
+
+          if (i==0){
+qqreadinfo();//用户名 
+qqreadwktime();//周时长查询		  
+qqreadconfig();//时长查询
+}		    
+
+else if (i==1)
+qqreadtask();//任务列表
+		    
+else if (i==2&&config.data.pageParams.todayReadSeconds/3600<=maxtime)
+qqreadtime();//上传时长
+
+else if (i==3&&task.data.taskList[1].doneFlag==0)
+qqreadssr1();//阅读金币1		    
+		    
+else if (i==4&&task.data.taskList[2].doneFlag==0){
+qqreadsign();//金币签到
+qqreadtake();//阅豆签到	  
+}
+			    
+else if (i==5&&task.data.treasureBox.doneFlag==0)
+qqreadbox();//宝箱
+
+else if (i==6&&task.data.taskList[0].doneFlag==0)
+qqreaddayread();//阅读任务
+
+else if (i==7&&task.data.taskList[1].doneFlag==0)
+qqreadssr2();//阅读金币2
+
+else if (i==8)
+qqreadpick();//领周时长奖励	    
+		    
+else if (i==9&&task.data.taskList[3].doneFlag==0)
+qqreadvideo();//视频任务		    
+		    
+else if(i==10&&task.data.taskList[2].doneFlag==0)
+qqreadsign2();//签到翻倍
+
+else if (i==11&&task.data.treasureBox.videoDoneFlag==0)
+qqreadbox2();//宝箱翻倍
+
+else if (i==12&&task.data.taskList[1].doneFlag==0)
+qqreadssr3();//阅读金币3
+		 
+else if (i == 13 && K < qqreadhdArr.length - 1) {
+  num += 1;
             all();
-	   } else if (i == 17 && num == cookiesArr.length - 1) {
-		console.log(`-------------------------\n\n企鹅阅读共完成${$.num}个账号阅读，阅读请求全部结束`)
+ } else if (i == 13 && K == qqreadhdArr.length - 1) {
+	 showmsg();//通知
+	console.log(`-------------------------\n\n企鹅阅读共完成${$.num}个账号阅读，阅读请求全部结束`)
 		   console.log(`============ 脚本执行完毕时间-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
 		    $.done();
-          }  	
+          }
         },
-
         (i + 1) * dd * 1000
       );
     })(i);
   }
 }
 
+
+     
 
 
 
@@ -146,18 +160,52 @@ return new Promise((resolve, reject) => {
    $.get(toqqreadtaskurl,(error, response, data) =>{
      if(logs) $.log(`${jsname}, 任务列表: ${data}`)
      task =JSON.parse(data)
+  kz+=
+    '【现金余额】:'+
+    (task.data.user.amount/10000).toFixed(2)+
+	'元\n'+
+    '【已开宝箱】:'+
+    task.data.treasureBox.count+
+	'个\n	   
 tz+=
-'【任务列表】:余额'+task.data.user.amount+'金币\n'+
-'【第'+task.data.invite.issue+'期】:时间'+task.data.invite.dayRange+'\n'
-+'已邀请'+task.data.invite.inviteCount+'人，再邀请'+task.data.invite.nextInviteConfig.count+'人获得'+task.data.invite.nextInviteConfig.amount+'金币\n'+
-'【'+task.data.taskList[0].title+'】:'+task.data.taskList[0].amount+'金币,'+task.data.taskList[0].actionText+'\n'+
-'【'+task.data.taskList[1].title+'】:'+task.data.taskList[1].amount+'金币,'+task.data.taskList[1].actionText+'\n'+
-'【'+task.data.taskList[2].title+'】:'+task.data.taskList[2].amount+'金币,'+task.data.taskList[2].actionText+'\n'+
-'【'+task.data.taskList[3].title+'】:'+task.data.taskList[3].amount+'金币,'+task.data.taskList[3].actionText+'\n'+
-'【宝箱任务'+(task.data.treasureBox.count+1)+'】:'+task.data.treasureBox.tipText+'\n'+
-'【'+task.data.fans.title+'】:'+task.data.fans.fansCount+'个好友,'+task.data.fans.todayAmount+'金币\n'
-
-
+    '【现金余额】:'+
+    (task.data.user.amount/10000).toFixed(2)+
+	'元\n'+
+    '【第'+
+	task.data.invite.issue+
+	'期】:时间'+
+    task.data.invite.dayRange+
+	'\n'+
+    ' 已邀请'+
+	task.data.invite.inviteCount+
+    '人，再邀请'+
+	task.data.invite.nextInviteConfig.count+
+    '人获得'+
+	task.data.invite.nextInviteConfig.amount+
+	'金币\n'+
+    '【'+
+	task.data.taskList[0].title+
+	'】:'+
+    task.data.taskList[0].amount+
+	'金币,'+
+    task.data.taskList[0].actionText+
+	'\n'+
+    '【'+
+	task.data.taskList[1].title+
+	'】:'+
+    task.data.taskList[1].amount+
+	'金币,'+
+    task.data.taskList[1].actionText+
+	'\n'+
+    '【'+
+	task.data.taskList[2].title+
+	'】:'+
+    task.data.taskList[2].amount+
+    '金币,'+
+    task.data.taskList[2].actionText+
+    '\n'+'【'+task.data.taskList[3].title+'】:'+task.data.taskList[3].amount+'金币,'+task.data.taskList[3].actionText+
+    '\n'+'【宝箱任务'+(task.data.treasureBox.count+1)+'】:'+task.data.treasureBox.tipText+'\n'+'【'+task.data.fans.title+'】:'+
+	task.data.fans.fansCount+'个好友,'+ task.data.fans.todayAmount+'金币\n'
 
 resolve()
 
@@ -165,13 +213,6 @@ resolve()
 
    })
   }  
-
-
-
-
-
-
-
 
 //用户名
 function qqreadinfo() {
@@ -187,23 +228,14 @@ return new Promise((resolve, reject) => {
    $.get(toqqreadinfourl,(error, response, data) =>{
      if(logs) $.log(`${jsname}, 用户名: ${data}`)
      info =JSON.parse(data)
+kz+=
+'\n========== 【'+info.data.user.nickName+'】 ==========\n'
 tz+=
-'【用户信息】:'+info.data.user.nickName+'\n'
-
-
-
-    
-
-
+'\n========== 【'+info.data.user.nickName+'】 ==========\n'
 resolve()
     })
    })
   }  
-
-
-
-
-
 
 
 
@@ -676,9 +708,7 @@ tz+='【周时长奖励'+(i+1)+'】:领取'+Packageid[i]+'阅豆\n'
 
 
 
-function showmsg() {
-
-	
+function showmsg() {	
 console.log(tz)
 let d = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);
 let gold=Number(task.data.user.amount)
@@ -686,8 +716,7 @@ if (notifyInterval==1&&gold >= 50000 && d.getHours()>=9 && d.getHours()<=20&&tas
 	notify.sendNotify(jsname,tz,'');//显示所有通知
 	console.log('显示所有通知')
 }
-else if (notifyInterval==2&&gold >= 50000&&d.getHours()>=9&&d.getHours()<=20&&task.data.treasureBox.doneFlag==15){
-
+else if (notifyInterval==2&&gold >= 100000&&d.getHours()>=9&&d.getHours()<=20&&task.data.treasureBox.doneFlag==15){
 	notify.sendNotify(jsname,tz,'')//宝箱每15次通知一次
 	console.log('宝箱每15次通知一次')
 }
@@ -696,9 +725,7 @@ else if (notifyInterval==2&&gold >= 50000&&d.getHours()>=9&&d.getHours()<=20&&ta
 	//notify.sendNotify(jsname,tz,'');//宝箱每15次通知一次
 	//console.log('宝箱每15次通知一次')
 //}
-else if (d.getHours()==19&&d.getMinutes()>=40&&d.getMinutes()<=50){
-
-
+else if (d.getHours()==19&&d.getMinutes()>=40&&d.getMinutes()<=55){
 	notify.sendNotify(jsname,tz,'')//每天19点40分通知一次	
 	console.log('每天19点40分通知一次')
 }

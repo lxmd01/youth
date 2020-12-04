@@ -126,10 +126,10 @@ qqreadbox2();//宝箱翻倍
 else if (i==12&&task.data.taskList[1].doneFlag==0)
 qqreadssr3();//阅读金币3
 		 
-else if (i == 13 && num < qqreadhdArr.length - 1) {
+else if (i == 13 && num < cookiesArr.length - 1) {
   num += 1;
             all();
- } else if (i == 13 && num== qqreadhdArr.length - 1) {
+ } else if (i == 13 && num== cookiesArr.length - 1) {
 	 showmsg();//通知
 	console.log(`-------------------------\n\n企鹅阅读共完成${$.num}个账号阅读，阅读请求全部结束`)
 		   console.log(`============ 脚本执行完毕时间-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)

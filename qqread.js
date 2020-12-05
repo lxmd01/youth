@@ -80,21 +80,18 @@ $.num = num+ 1;
 console.log(`-------------------------\n\n开始企鹅阅读第${$.num}个账号阅读`) 
    for(var i=0;i<14;i++)
  { (function(i) {
-            setTimeout(function() {
-
-         if (i==0){
+     setTimeout(function() {
+ if (i==0){
 qqreadinfo();//用户名 
 qqreadwktime();//周时长查询		  
 qqreadconfig();//时长查询
 }		    
-
 else if (i==1)
-qqreadtask();//任务列表
-		    
-else if (i==2&&task.data.taskList[1].doneFlag==0)
-qqreadssr1();//阅读金币1		    
-else if (i==3&&config.data.pageParams.todayReadSeconds/3600<=maxtime)
-qqreadtime();//上传时长		    
+qqreadtask();//任务列表		    		    
+else if (i==2&&config.data.pageParams.todayReadSeconds/3600<=maxtime)
+qqreadtime();//上传时长	
+ealse if (i==2&&task.data.taskList[1].doneFlag==0)
+qqreadssr1();//阅读金币1
 else if (i==4&&task.data.taskList[2].doneFlag==0){
 qqreadsign();//金币签到
 qqreadtake();//阅豆签到	  

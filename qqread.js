@@ -43,7 +43,7 @@ let task = '', config, ssr2 = '', wktime;
 
 !(async () => {
   await getCookiesFromSecret();
-  await qqRead();
+//await qqRead(); 
 })()
   .catch((e) => {
     $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -115,6 +115,7 @@ function getCookiesFromSecret() {
       });
     }
     console.log(`============ 共 ${cookiesArr.length} 个企鹅读书账号  =============\n`);
+	 qqRead();
   }
 }
 

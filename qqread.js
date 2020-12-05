@@ -33,7 +33,7 @@ const dd=1//单次任务延迟,默认1秒
 
 const TIME=30//单次时长上传限制，默认5分钟
 
-const maxtime=12//每日上传时长限制，默认12小时
+const maxtime=20//每日上传时长限制，默认12小时
 
 const wktimess=1200//周奖励领取标准，默认1200分钟
 
@@ -43,7 +43,7 @@ let task = '', config, ssr2 = '', wktime;
 
 !(async () => {
   await getCookiesFromSecret();
-//await qqRead(); 
+  await qqRead(); 
 })()
   .catch((e) => {
     $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -115,7 +115,7 @@ function getCookiesFromSecret() {
       });
     }
     console.log(`============ 共 ${cookiesArr.length} 个企鹅读书账号  =============\n`);
-	 qqRead();
+	 
   }
 }
 

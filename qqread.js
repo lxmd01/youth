@@ -41,7 +41,7 @@ const wktimess=1200//周奖励领取标准，默认1200分钟
 
 const qqreadurlVal = "https://mqqapi.reader.qq.com/mqq/user/init";
 let qqreadheaderVal, qqreadtimeurlVal, qqreadtimeheaderVal,cookiesArr = [];
-let task='', config, ssr2='',wktime;
+let ssr2='',wktime;
 !(async () => {
   await getCookiesFromSecret();
   await qqRead();

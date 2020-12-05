@@ -88,7 +88,7 @@ qqreadconfig();//时长查询
 }		    
 else if (i==1)
 qqreadtask();//任务列表		    		    
-else if (i==2&&config.data.pageParams.todayReadSeconds/3600<=maxtime)
+else if (i==2)
 qqreadtime();//上传时长	
 else if (i==3&&task.data.taskList[1].doneFlag==0)
 qqreadssr1();//阅读金币1
@@ -293,6 +293,7 @@ return new Promise((resolve, reject) => {
     url: qqreadtimeurlVal.replace(/readTime=/g, `readTime=${TIME}`),
     headers: JSON.parse(qqreadtimeheaderVal),   
     };	
+if (config.data.pageParams.todayReadSeconds/3600<=maxtime){	
    $.get(toqqreadtimeurl,(error, response, data) =>{
      if(logs) $.log(`${jsname}, 阅读时长: ${data}`)
      time =JSON.parse(data)
@@ -302,8 +303,8 @@ tz+='【阅读时长】:上传'+TIME/6+'分钟\n'
 resolve()
     })
    })
-  }  
-
+ }
+ }
 
 
 

@@ -20,7 +20,7 @@
 
 const jsname='企鹅读书'
 const $ = Env(jsname)
-console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
+
 console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
 const notify = $.isNode() ? require('./sendNotify') : '';
 var tz='';
@@ -41,197 +41,108 @@ const qqreadurlVal = "https://mqqapi.reader.qq.com/mqq/user/init";
 let qqreadheaderVal, qqreadtimeurlVal, qqreadtimeheaderVal,cookiesArr = [];
 let task = '', config, ssr2 = '', wktime;
 
-!(async () => {
-  await getCookiesFromSecret();
-  await qqRead(); 
-})()
-  .catch((e) => {
-    $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
-  })
-  .finally(() => {
-    $.done();
-  })
-
-async function qqRead() {
-  for (const item of cookiesArr) {
-    qqreadheaderVal = item["qqreadheaderVal"];
-    qqreadtimeurlVal = item["qqreadtimeurlVal"];
-    qqreadtimeheaderVal = item["qqreadtimeheaderVal"];
-
-    await qqreadinfo();//用户名
-    await qqreadconfig();//时长查询
-    await qqreadtask();//任务列表
-
-    if (task.data.taskList[0].doneFlag == 0) await qqreaddayread();//阅读任务
-    if (task.data.taskList[2].doneFlag == 0) {
-      await qqreadsign();//金币签到
-      await qqreadtake();//阅豆签到
-      await qqreadsign2();//签到翻倍
-    }
-    if (task.data.treasureBox.doneFlag == 0) await qqreadbox();//宝箱
-    if (task.data.taskList[1].doneFlag == 0) {
-      await qqreadssr1();//阅读金币1
-      await $.wait(3000);
-      await qqreadssr2();//阅读金币2
-      await $.wait(5000);
-      await qqreadssr3();//阅读金币3
-    }
-    if (task.data.taskList[3].doneFlag == 0) await qqreadvideo();//视频奖励
-    if (task.data.treasureBox.videoDoneFlag == 0) await qqreadbox2();//宝箱翻倍
-    if (config.data.pageParams.todayReadSeconds / 3600 <= maxtime) await qqreadtime();//阅读时长
-
-    await qqreadwktime();//周时长查询
-    await qqreadpick();//领周时长奖励
-  }
-  await showmsg();//通知
-}
-
-function getCookiesFromSecret() {
   // catch value from Action Secret.
   if ($.isNode()) {
-    let headers = [], timeurls = [], timeheaders = [];
-    if (process.env.QQREAD_HEADER) {
-      if (process.env.QQREAD_HEADER.indexOf('#') > -1) {
-        headers = process.env.QQREAD_HEADER.split('#');
-      } else {
-        headers = [process.env.QQREAD_HEADER];
-      };
-      if (process.env.QQREAD_TIMEURL.indexOf('\n') > -1) {
-        timeurls = process.env.QQREAD_TIMEURL.split('\n');
-      } else {
-        timeurls = [process.env.QQREAD_TIMEURL];
-      };
-      if (process.env.QQREAD_TIMEHEADER.indexOf('#') > -1) {
-        timeheaders = process.env.QQREAD_TIMEHEADER.split('#');
-      } else {
-        timeheaders = [process.env.QQREAD_TIMEHEADER];
-      };
-    }
-    for (let index = 0; index < headers.length; index++) {
-      cookiesArr.push({
-        "qqreadheaderVal": headers[index] || "",
-        "qqreadtimeurlVal": timeurls[index] || "",
-        "qqreadtimeheaderVal": timeheaders[index] || ""
-      });
-    }
-    console.log(`============ 共 ${cookiesArr.length} 个企鹅读书账号  =============\n`);
-	 
-  }
+    let headers = [], timeurls = [], timeheaders = [];// catch value from Action Secret.
+let headers = [], timeurls = [], timeheaders = [];
+if($.isNode()){
+if (process.env.QQREAD_HEADER && process.env.QQREAD_HEADER.indexOf('#') > -1) {
+  headers = process.env.QQREAD_HEADER.split('#');
+ } else {
+    headers = process.env.QQREAD_HEADER.split();
+    };
+  if (process.env.QQREAD_TIMEURL && process.env.QQREAD_TIMEURL.indexOf('\n') > -1) {
+   timeurls = process.env.QQREAD_TIMEURL.split('\n');
+  } else {
+    timeurls = process.env.QQREAD_TIMEURL.split();
+   };
+  if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') > -1) {
+   timeheaders = process.env.QQREAD_TIMEHEADER.split('#');
+ } else {
+   timeheaders = process.env.QQREAD_TIMEHEADER.split();
+    };
+}  
+for (let index = 0; index < headers.length; index++) {
+  const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
+  json_temp.qqreadheaderVal = headers[index];
+ json_temp.qqreadtimeurlVal = timeurls[index];
+  json_temp.qqreadtimeheaderVal = timeheaders[index];
+  cookiesArr.push(json_temp);
 }
 
+let num = 0;
+all();
 
+function all() {
+ qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
+qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
+ qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
+$.num = num+ 1;
+console.log(`-------------------------\n\n开始企鹅阅读第${$.num}个账号阅读`) 
+   for(var i=0;i<14;i++)
+ { (function(i) {
+            setTimeout(function() {
 
+         if (i==0){
+qqreadinfo();//用户名 
+qqreadwktime();//周时长查询		  
+qqreadconfig();//时长查询
+}		    
 
-
-
-
-
-
-// catch value from Action Secret.
-//let headers = [], timeurls = [], timeheaders = [];
-//if($.isNode()){
-//  if (process.env.QQREAD_HEADER && process.env.QQREAD_HEADER.indexOf('#') > -1) {
-  //  headers = process.env.QQREAD_HEADER.split('#');
- // } else {
-    //headers = process.env.QQREAD_HEADER.split();
-   // };
-  //if (process.env.QQREAD_TIMEURL && process.env.QQREAD_TIMEURL.indexOf('\n') > -1) {
-   // timeurls = process.env.QQREAD_TIMEURL.split('\n');
-//  } else {
-    //timeurls = process.env.QQREAD_TIMEURL.split();
-   // };
-  //if (process.env.QQREAD_TIMEHEADER && process.env.QQREAD_TIMEHEADER.indexOf('#') > -1) {
-   // timeheaders = process.env.QQREAD_TIMEHEADER.split('#');
- // } else {
-   // timeheaders = process.env.QQREAD_TIMEHEADER.split();
-    //};
-//}  
-//for (let index = 0; index < headers.length; index++) {
-  //const json_temp = {qqreadheaderVal:"", qqreadtimeurlVal:"", qqreadtimeheaderVal:""};
-  //json_temp.qqreadheaderVal = headers[index];
- // json_temp.qqreadtimeurlVal = timeurls[index];
-  //json_temp.qqreadtimeheaderVal = timeheaders[index];
-  //cookiesArr.push(json_temp);
-//}
-
-//let num = 0;
-//all();
-
-//function all() {
- //qqreadheaderVal = cookiesArr[num].qqreadheaderVal;
-//qqreadtimeurlVal = cookiesArr[num].qqreadtimeurlVal;
- //qqreadtimeheaderVal = cookiesArr[num].qqreadtimeheaderVal;
-//$.num = num+ 1;
-//console.log(`-------------------------\n\n开始企鹅阅读第${$.num}个账号阅读`) 
-   //for(var i=0;i<14;i++)
- //{ (function(i) {
-           // setTimeout(function() {
-
-        //  if (i==0){
-//qqreadinfo();//用户名 
-//qqreadwktime();//周时长查询		  
-//qqreadconfig();//时长查询
-//}		    
-
-//else if (i==1)
-//qqreadtask();//任务列表
+else if (i==1)
+qqreadtask();//任务列表
 		    
-//else if (i==2&&config.data.pageParams.todayReadSeconds/3600<=maxtime)
-//qqreadtime();//上传时长
-
-//else if (i==3&&task.data.taskList[1].doneFlag==0)
-//qqreadssr1();//阅读金币1		    
-		    
-//else if (i==4&&task.data.taskList[2].doneFlag==0){
-//qqreadsign();//金币签到
-//qqreadtake();//阅豆签到	  
-//}
+else if (i==2&&task.data.taskList[1].doneFlag==0)
+qqreadssr1();//阅读金币1		    
+else if (i==3&&config.data.pageParams.todayReadSeconds/3600<=maxtime)
+qqreadtime();//上传时长		    
+else if (i==4&&task.data.taskList[2].doneFlag==0){
+qqreadsign();//金币签到
+qqreadtake();//阅豆签到	  
+}
 			    
-//else if (i==5&&task.data.treasureBox.doneFlag==0)
-//qqreadbox();//宝箱
+else if (i==5&&task.data.treasureBox.doneFlag==0)
+qqreadbox();//宝箱
 
-//else if (i==6&&task.data.taskList[0].doneFlag==0)
-//qqreaddayread();//阅读任务
+else if (i==6&&task.data.taskList[0].doneFlag==0)
+qqreaddayread();//阅读任务
 
-//else if (i==7&&task.data.taskList[1].doneFlag==0)
-//qqreadssr2();//阅读金币2
+else if (i==7&&task.data.taskList[1].doneFlag==0)
+qqreadssr2();//阅读金币2
 
-//else if (i==8)
-//qqreadpick();//领周时长奖励	    
+else if (i==8)
+qqreadpick();//领周时长奖励	    
 		    
-//else if (i==9&&task.data.taskList[3].doneFlag==0)
-//qqreadvideo();//视频任务		    
+else if (i==9&&task.data.taskList[3].doneFlag==0)
+qqreadvideo();//视频任务		    
 		    
-//else if(i==10&&task.data.taskList[2].doneFlag==0)
-//qqreadsign2();//签到翻倍
+else if(i==10&&task.data.taskList[2].doneFlag==0)
+qqreadsign2();//签到翻倍
 
-//else if (i==11&&task.data.treasureBox.videoDoneFlag==0)
-//qqreadbox2();//宝箱翻倍
+else if (i==11&&task.data.treasureBox.videoDoneFlag==0)
+qqreadbox2();//宝箱翻倍
 
-//else if (i==12&&task.data.taskList[1].doneFlag==0)
-//qqreadssr3();//阅读金币3	 
-//else if (i == 13 && num < cookiesArr.length - 1){
-          //num += 1;
-//showmsg();//通知
-           // all();
-// } else if (i == 13 && num== cookiesArr.length - 1) {
+else if (i==12&&task.data.taskList[1].doneFlag==0)
+qqreadssr3();//阅读金币3	 
+else if (i == 13 && num < cookiesArr.length - 1){
+          num += 1;
+showmsg();//通知
+           all();
+} else if (i == 13 && num== cookiesArr.length - 1) {
 	
-	//console.log(`-------------------------\n\n企鹅阅读共完成${$.num}个账号阅读，阅读请求全部结束`)
-        //console.log(`============ 脚本执行完毕时间-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
-		   // $.done();
-   //       }
-  //      },
-  //      (i + 1) * dd * 1000
-     // );
-  //  })(i);
-//  }
-//}
+	console.log(`-------------------------\n\n企鹅阅读共完成${$.num}个账号阅读，阅读请求全部结束`)
+        console.log(`============ 脚本执行完毕时间-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
+		    $.done();
+       }
+       },
+        (i + 1) * dd * 1000
+      );
+    })(i);
+ }
+}
 
 
      
-
-
-
 
 
 //任务列表

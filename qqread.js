@@ -5,7 +5,7 @@
 转载请备注个名字，谢谢
 11.25 增加 阅读时长上传，阅读金币，阅读随机金币
 11.25 修复翻倍宝箱不同时领取的问题.增加阅读金币判定
-11.25 修复阅读时长问题，阅读金币问题，请重新获取时长cookie
+11.25 修复阅读时长问题，阅读金币问题，请重新获取时长cookiek
 11.26 随机金币只有一次，故去除，调整修复阅读金币问题，增加时长上传限制
 11.26 增加领取周时长奖励
 11.26 增加结束命令
@@ -39,7 +39,8 @@ const wktimess=1200//周奖励领取标准，默认1200分钟
 
 const qqreadurlVal = "https://mqqapi.reader.qq.com/mqq/user/init";
 let qqreadheaderVal, qqreadtimeurlVal, qqreadtimeheaderVal,cookiesArr = [];
-let ssr2='',task='',config,wktime;
+let task = '', config, ssr2 = '', wktime;
+
 !(async () => {
   await getCookiesFromSecret();
   await qqRead();
@@ -85,9 +86,6 @@ async function qqRead() {
   await showmsg();//通知
 }
 
-
-
-
 function getCookiesFromSecret() {
   // catch value from Action Secret.
   if ($.isNode()) {
@@ -119,6 +117,7 @@ function getCookiesFromSecret() {
     console.log(`============ 共 ${cookiesArr.length} 个企鹅读书账号  =============\n`);
   }
 }
+
 
 
 

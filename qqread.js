@@ -43,9 +43,8 @@ let task = '', config, ssr2 = '', wktime;
 
   // catch value from Action Secret.
   if ($.isNode()) {
-    let headers = [], timeurls = [], timeheaders = [];// catch value from Action Secret.
+    
 let headers = [], timeurls = [], timeheaders = [];
-if($.isNode()){
 if (process.env.QQREAD_HEADER && process.env.QQREAD_HEADER.indexOf('#') > -1) {
   headers = process.env.QQREAD_HEADER.split('#');
  } else {

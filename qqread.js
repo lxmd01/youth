@@ -25,8 +25,6 @@ console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date
 const notify = $.isNode() ? require('./sendNotify') : '';
 var tz='';
 var kz='';
-var task='';
-var config='';
 const logs = 0;   //0为关闭日志，1为开启
 const notifyInterval=2
 //0为关闭通知，1为所有通知，2为宝箱领取成功通知，3为宝箱每15次通知一次

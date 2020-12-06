@@ -221,7 +221,7 @@ return new Promise((resolve, reject) => {
      if(logs) $.log(`${jsname}, 用户名: ${data}`)
      info =JSON.parse(data)
 kz+=
-'\n========== 【'+info.data.user.nickName+'】 ==========\n'
+'\n======= 【'+info.data.user.nickName+'】 =======\n'
 tz+=
 '\n========== 【'+info.data.user.nickName+'】 ==========\n'
 resolve()
@@ -718,9 +718,9 @@ else if (notifyInterval==2&&gold >= 100000&&d.getHours()>=9&&d.getHours()<=20&&t
 	//notify.sendNotify(jsname,tz,'');//宝箱每15次通知一次
 	//console.log('宝箱每15次通知一次')
 //}
-else if (d.getHours()==20&&d.getMinutes()>=10&&d.getMinutes()<=15){
+else if (d.getHours()==19&&d.getMinutes()>=45&&d.getMinutes()<=55){
 	notify.sendNotify(jsname,kz,'')//每天19点45分通知一次	
-	console.log('每天19点40分通知一次')
+	
 }
 kz=''	
 tz=''

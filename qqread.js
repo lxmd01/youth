@@ -25,6 +25,8 @@ console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date
 const notify = $.isNode() ? require('./sendNotify') : '';
 var tz='';
 var kz='';
+var task='';
+var config='';
 const logs = 0;   //0为关闭日志，1为开启
 const notifyInterval=2
 //0为关闭通知，1为所有通知，2为宝箱领取成功通知，3为宝箱每15次通知一次
@@ -152,7 +154,13 @@ return new Promise((resolve, reject) => {
    $.get(toqqreadtaskurl,(error, response, data) =>{
      if(logs) $.log(`${jsname}, 任务列表: ${data}`)
      task =JSON.parse(data)
-     
+       kz+=
+    '【现金余额】:'+
+    (task.data.user.amount/10000).toFixed(2)+
+	'元\n'+
+    '【已开宝箱】:'+
+    task.data.treasureBox.count+
+	'个\n' 
 tz+=
     '【现金余额】:'+
     (task.data.user.amount/10000).toFixed(2)+
@@ -214,7 +222,8 @@ return new Promise((resolve, reject) => {
    $.get(toqqreadinfourl,(error, response, data) =>{
      if(logs) $.log(`${jsname}, 用户名: ${data}`)
      info =JSON.parse(data)
-
+kz+=
+'\n========== 【'+info.data.user.nickName+'】 ==========\n'
 tz+=
 '\n========== 【'+info.data.user.nickName+'】 ==========\n'
 resolve()
@@ -703,7 +712,7 @@ if (notifyInterval==1&&gold >= 50000 && d.getHours()>=9 && d.getHours()<=20&&tas
 	console.log('显示所有通知')
 }
 else if (notifyInterval==2&&gold >= 100000&&d.getHours()>=9&&d.getHours()<=20&&task.data.treasureBox.doneFlag==15){
-	notify.sendNotify(jsname,tz,'')//宝箱每15次通知一次
+	notify.sendNotify(jsname,kz,'')//宝箱每15次通知一次
 	console.log('宝箱每15次通知一次')
 }
 //else if (notifyInterval==3&&gold >= 50000&&d.getHours()>=9&&d.getHours()<=20&&task.data.treasureBox.doneFlag==0&&task.data.treasureBox.count==0||task.data.treasureBox.count==15||task.data.treasureBox.count==30||task.data.treasureBox.count==45||task.data.treasureBox.count==60){
@@ -711,10 +720,11 @@ else if (notifyInterval==2&&gold >= 100000&&d.getHours()>=9&&d.getHours()<=20&&t
 	//notify.sendNotify(jsname,tz,'');//宝箱每15次通知一次
 	//console.log('宝箱每15次通知一次')
 //}
-else if (d.getHours()==19&&d.getMinutes()>=40&&d.getMinutes()<=55){
-	notify.sendNotify(jsname,tz,'')//每天19点40分通知一次	
+else if (d.getHours()==20&&d.getMinutes()>=10&&d.getMinutes()<=15){
+	notify.sendNotify(jsname,kz,'')//每天19点45分通知一次	
 	console.log('每天19点40分通知一次')
 }
+kz=''	
 tz=''
 }
 

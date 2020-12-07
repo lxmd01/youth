@@ -193,7 +193,7 @@ function qqreadtrack() {
       url: "https://mqqapi.reader.qq.com/log/v4/mqq/track",
 
       headers: JSON.parse(qqreadtimeheaderVal),
-	  body: qqreadbodyVal,      
+	  body: qqreadheaderVal,      
       timeout: 60000,
     };
     $.post(toqqreadtrackurl, (error, response, data) => {

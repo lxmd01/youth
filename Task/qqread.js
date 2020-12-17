@@ -240,7 +240,7 @@ async function QQ_READ() {
 function showmsg() {
  let d = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);
   $.msg(jsname, "", tz); // 宝箱每15次通知一次
- if (d.getHours()==23&&d.getMinutes()>=40&&d.getMinutes()<=45){
+ if (d.getHours()==23&&d.getMinutes()>=40&&d.getMinutes()<=50){
 	notify.sendNotify(jsname,kz,'')//每天19点45分通知一次	
 }
 kz=''	

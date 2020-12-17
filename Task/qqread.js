@@ -236,10 +236,12 @@ async function QQ_READ() {
     }
    
  await showmsg();//通知
-	 console.log(`-------------------------\n\n企鹅阅读共完成${$.index}个账号阅读，阅读请求全部结束`)
-        console.log(`============ 脚本执行完毕时间-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)  
+	 
   }
+console.log(`-------------------------\n\n企鹅阅读共完成${$.index}个账号阅读，阅读请求全部结束`)
+ console.log(`============ 脚本执行完毕时间-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)  
 }
+
 function showmsg() {
 
  let d = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);

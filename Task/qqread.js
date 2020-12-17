@@ -101,7 +101,7 @@ function getNodeCookie() {
       }
    
     }
-    if (process.env.QQREAD_TIMEURL {
+    if (process.env.QQREAD_TIMEURL) {
       if (process.env.QQREAD_TIMEURL.indexOf('#') > -1) {
         console.log(`您的QQREAD_TIMEURL选择的是用#隔开\n`)
        QQREAD_TIMEURL = process.env.QQREAD_TIMEURL.split('#');

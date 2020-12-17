@@ -61,8 +61,8 @@ http-request https:\/\/mqqapi\.reader\.qq\.com\/mqq\/addReadTimeWithBid? script-
 const jsname = '企鹅读书'
 const $ = Env(jsname)
 let task = '', config, ssr2 = '', wktime, day = 0;
-console.log(`\n========= 脚本执行时间(TM)：${new Date(new Date().getTime() + 0 * 60 * 60 * 1000).toLocaleString('zh', {hour12: false})} =========\n`)
-
+console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
+const notify = $.isNode() ? require('./sendNotify') : '';
 const logs = 1;   //0为关闭日志，1为开启
 
 const TIME = 30//单次时长上传限制，默认5分钟
@@ -88,53 +88,52 @@ let QQ_READ_COOKIES = [
 ]
 function getNodeCookie() {
   if ($.isNode()) {
-    let QQ_READ_BODY_VAL = [], QQ_READ_TIME_URL_VAL = [], QQ_READ_TIME_HEADER_VAL = [];
-    if (process.env.QQ_READ_HEADER_VAL) {
-      if (process.env.QQ_READ_HEADER_VAL.indexOf('@') > -1) {
-        console.log(`您的QQ_READ_HEADER_VAL选择的是用@隔开\n`)
-        QQ_READ_BODY_VAL = process.env.QQ_READ_HEADER_VAL.split('@');
-      } else if (process.env.QQ_READ_HEADER_VAL.indexOf('\n') > -1) {
-        console.log(`您的QQ_READ_HEADER_VAL选择的是用换行隔开\n`)
-        QQ_READ_BODY_VAL = process.env.QQ_READ_HEADER_VAL.split('\n');
+    let QQREAD_HEADER = [], QQREAD_TIMEURL = [], QQREAD_TIMEHEADER = [];
+    if (process.env.QQREAD_HEADER) {
+      if (process.env.QQREAD_HEADER.indexOf('#') > -1) {
+        console.log(`您的QQREAD_HEADER选择的是用#隔开\n`)
+        QQREAD_HEADER = process.env.QQREAD_HEADER.split('#');
+      } else if (process.env.QQREAD_HEADER.indexOf('\n') > -1) {
+        console.log(`QQREAD_HEADER选择的是用换行隔开\n`)
+        QQREAD_HEADER = process.env.QQREAD_HEADER.split('\n');
       } else {
-        QQ_READ_BODY_VAL = [process.env.QQ_READ_HEADER_VAL];
+        QQREAD_HEADER = [process.env.QQREAD_HEADER];
       }
-      // QQ_READ_HEADER_VAL = [...new Set(QQ_READ_HEADER_VAL)]
-      // $.log(QQ_READ_HEADER_VAL)
+   
     }
-    if (process.env.QQ_READ_TIME_URL_VAL) {
-      if (process.env.QQ_READ_TIME_URL_VAL.indexOf('@') > -1) {
-        console.log(`您的QQ_READ_TIME_URL_VAL选择的是用@隔开\n`)
-        QQ_READ_TIME_URL_VAL = process.env.QQ_READ_TIME_URL_VAL.split('@');
-      } else if (process.env.QQ_READ_HEADER_VAL.indexOf('\n') > -1) {
-        console.log(`您的QQ_READ_TIME_URL_VAL选择的是用换行隔开\n`)
-        QQ_READ_TIME_URL_VAL = process.env.QQ_READ_TIME_URL_VAL.split('\n');
+    if (process.env.QQREAD_TIMEURL {
+      if (process.env.QQREAD_TIMEURL.indexOf('#') > -1) {
+        console.log(`您的QQREAD_TIMEURL选择的是用#隔开\n`)
+       QQREAD_TIMEURL = process.env.QQREAD_TIMEURL.split('#');
+      } else if (process.env.QQREAD_TIMEURL.indexOf('\n') > -1) {
+        console.log(`您的QQREAD_TIMEURL选择的是用换行隔开\n`)
+        QQREAD_TIMEURL = process.env.QQREAD_TIMEURL.split('\n');
       } else {
-        QQ_READ_TIME_URL_VAL = [process.env.QQ_READ_TIME_URL_VAL];
+        QQREAD_TIMEURL = [process.env.QQREAD_TIMEURL];
       }
-      // QQ_READ_TIME_URL_VAL = [...new Set(QQ_READ_TIME_URL_VAL)]
+   
     }
-    if (process.env.QQ_READ_TIME_HEADER_VAL) {
-      if (process.env.QQ_READ_TIME_HEADER_VAL.indexOf('@') > -1) {
-        console.log(`您的QQ_READ_TIME_HEADER_VAL选择的是用@隔开\n`)
-        QQ_READ_TIME_HEADER_VAL = process.env.QQ_READ_TIME_HEADER_VAL.split('@');
-      } else if (process.env.QQ_READ_TIME_HEADER_VAL.indexOf('\n') > -1) {
-        console.log(`您的QQ_READ_TIME_HEADER_VAL选择的是用换行隔开\n`)
-        QQ_READ_TIME_HEADER_VAL = process.env.QQ_READ_TIME_HEADER_VAL.split('\n');
+    if (process.env.QQREAD_TIMEHEADER) {
+      if (process.env.QQREAD_TIMEHEADER.indexOf('#') > -1) {
+        console.log(`您的QQREAD_TIMEHEADER选择的是用#隔开\n`)
+        QQREAD_TIMEHEADER = process.env.QQREAD_TIMEHEADER.split('#');
+      } else if (process.env.QQREAD_TIMEHEADER.indexOf('\n') > -1) {
+        console.log(`您的QQREAD_TIMEHEADER选择的是用换行隔开\n`)
+        QQREAD_TIMEHEADER = process.env.QQREAD_TIMEHEADER.split('\n');
       } else {
-        QQ_READ_TIME_HEADER_VAL = [process.env.QQ_READ_TIME_HEADER_VAL];
+        QQREAD_TIMEHEADER = [process.env.QQREAD_TIMEHEADER];
       }
       // QQ_READ_TIME_HEADER_VAL = [...new Set(QQ_READ_TIME_HEADER_VAL)]
     }
-    if (QQ_READ_BODY_VAL && QQ_READ_BODY_VAL.length > 0) QQ_READ_COOKIES = [];
+    if (QQREAD_HEADER && QQREAD_HEADER.length > 0) QQ_READ_COOKIES = [];
     for (let i = 0; i < QQ_READ_BODY_VAL.length; i ++) {
       QQ_READ_COOKIES.push({
-        "qqreadbodyVal": QQ_READ_BODY_VAL[i] || "",
-        "qqreadtimeurlVal": QQ_READ_TIME_URL_VAL[i] || "",
-        "qqreadtimeheaderVal": QQ_READ_TIME_HEADER_VAL[i] || ""
+        "qqreadbodyVal": QQREAD_HEADER[i] || "",
+        "qqreadtimeurlVal": QQREAD_TIMEURL[i] || "",
+        "qqreadtimeheaderVal": QQREAD_TIMEHEADER[i] || ""
       })
     }
-    // console.log(`${JSON.stringify(QQ_READ_COOKIES)}`)
+ 
   }
 }
 //CK运行
@@ -239,7 +238,14 @@ async function QQ_READ() {
   }
 }
 function showmsg() {
+ let d = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);
   $.msg(jsname, "", tz); // 宝箱每15次通知一次
+ if (d.getHours()==23&&d.getMinutes()>=40&&d.getMinutes()<=45){
+	notify.sendNotify(jsname,kz,'')//每天19点45分通知一次	
+}
+kz=''	
+tz=''
+
 }
 //提现
 function qqreadwithdraw() {

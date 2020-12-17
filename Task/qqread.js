@@ -177,6 +177,7 @@ async function QQ_READ() {
   for (let i = 0; i < QQ_READ_COOKIES.length; i++) {
     $.log(`\n*************开始QQ账号${i + 1}**************\n`);
     tz = '';
+	$.index = i + 1;  
     if (!QQ_READ_COOKIES[i]["qqreadbodyVal"] || !QQ_READ_COOKIES[i]['qqreadtimeurlVal'] || !QQ_READ_COOKIES[i]['qqreadtimeheaderVal']) {
       $.log(`账号${i + 1}暂未提供脚本执行所需的cookie`);
       continue
@@ -235,13 +236,17 @@ async function QQ_READ() {
     }
    
  await showmsg();//通知
+	 console.log(`-------------------------\n\n企鹅阅读共完成${$.index}个账号阅读，阅读请求全部结束`)
+        console.log(`============ 脚本执行完毕时间-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)  
   }
 }
 function showmsg() {
+
  let d = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);
   $.msg(jsname, "", tz); // 宝箱每15次通知一次
  if (d.getHours()==19&&d.getMinutes()>=40&&d.getMinutes()<=45){
 	notify.sendNotify(jsname,kz,'')//每天19点45分通知一次	
+  
 }
 kz=''	
 tz=''

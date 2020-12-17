@@ -126,7 +126,7 @@ function getNodeCookie() {
       // QQ_READ_TIME_HEADER_VAL = [...new Set(QQ_READ_TIME_HEADER_VAL)]
     }
     if (QQREAD_HEADER && QQREAD_HEADER.length > 0) QQ_READ_COOKIES = [];
-    for (let i = 0; i < QQ_READ_BODY_VAL.length; i ++) {
+    for (let i = 0; i < QQREAD_HEADER.length; i ++) {
       QQ_READ_COOKIES.push({
         "qqreadbodyVal": QQREAD_HEADER[i] || "",
         "qqreadtimeurlVal": QQREAD_TIMEURL[i] || "",
